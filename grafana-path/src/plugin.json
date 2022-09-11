@@ -2,15 +2,15 @@
   "$schema": "https://raw.githubusercontent.com/grafana/grafana/master/docs/sources/developers/plugins/plugin.schema.json",
   "type": "panel",
   "name": "grafana-path",
-  "id": "dionesde-grafana-path-grafana-path",
+  "id": "dionesde-grafana-path",
   "info": {
-    "description": "grafana path",
+    "description": "maps",
     "author": {
       "name": "dionesde",
       "url": "https://github.com/dionesde/grafana-path"
     },
     "keywords": [
-      "grafana path maps"
+      "maps"
     ],
     "logos": {
       "small": "img/logo.svg",

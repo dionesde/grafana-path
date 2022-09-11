@@ -1,7 +1,7 @@
 {
   "name": "dionesde-grafana-path-grafana-path",
   "version": "1.0.0",
-  "description": "grafana path",
+  "description": "maps",
   "scripts": {
     "build": "grafana-toolkit plugin:build",
     "test": "grafana-toolkit plugin:test",
