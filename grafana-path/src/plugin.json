@@ -2,15 +2,15 @@
   "$schema": "https://raw.githubusercontent.com/grafana/grafana/master/docs/sources/developers/plugins/plugin.schema.json",
   "type": "panel",
   "name": "grafana-path",
-  "id": "ufsm-grafana-path",
+  "id": "dionesde-grafana-path-grafana-path",
   "info": {
-    "description": "grafana path maps",
+    "description": "grafana path",
     "author": {
       "name": "dionesde",
-      "url": "UFSM"
+      "url": "https://github.com/dionesde/grafana-path"
     },
     "keywords": [
-      "maps path"
+      "grafana path maps"
     ],
     "logos": {
       "small": "img/logo.svg",

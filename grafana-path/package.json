@@ -1,7 +1,7 @@
 {
-  "name": "ufsm-grafana-path",
+  "name": "dionesde-grafana-path-grafana-path",
   "version": "1.0.0",
-  "description": "grafana path maps",
+  "description": "grafana path",
   "scripts": {
     "build": "grafana-toolkit plugin:build",
     "test": "grafana-toolkit plugin:test",
