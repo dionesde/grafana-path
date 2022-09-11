@@ -1,32 +1,37 @@
 {
+  "$schema": "https://raw.githubusercontent.com/grafana/grafana/master/docs/sources/developers/plugins/plugin.schema.json",
   "type": "panel",
-  "name": "Traceroute Map Panel",
-  "id": "diones-grafana-path",
-
+  "name": "grafana-path",
+  "id": "ufsm-grafana-path",
   "info": {
-    "description": "A Grafana panel that visualize traceroute hops in a map",
+    "description": "grafana path maps",
     "author": {
-      "name": "Gowee"
+      "name": "dionesde",
+      "url": "UFSM"
     },
-    "keywords": ["traceroute", "map", "mtr"],
+    "keywords": [
+      "maps path"
+    ],
     "logos": {
       "small": "img/logo.svg",
       "large": "img/logo.svg"
     },
     "links": [
-      { "name": "Website", "url": "https://github.com/Gowee/traceroute-map-panel" },
-      { "name": "License", "url": "https://github.com/Gowee/traceroute-map-panel/blob/master/LICENSE" }
+      {
+        "name": "Website",
+        "url": "https://github.com/grafana/grafana-starter-panel"
+      },
+      {
+        "name": "License",
+        "url": "https://github.com/grafana/grafana-starter-panel/blob/master/LICENSE"
+      }
     ],
-    "screenshots": [
-      { "name": "Traceroute Map Panel ployline", "path": "img/screenshot1.png" },
-      { "name": "Traceroute Map Panel spline", "path": "img/screenshot2.png" }
-    ],
+    "screenshots": [],
     "version": "%VERSION%",
     "updated": "%TODAY%"
   },
-
   "dependencies": {
-    "grafanaDependency": ">=7.0",
+    "grafanaDependency": ">=7.0.0",
     "plugins": []
   }
 }
