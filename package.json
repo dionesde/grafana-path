@@ -1,5 +1,5 @@
 {
-  "name": "traceroute-map-panel",
+  "name": "path-map-panel",
   "version": "0.3.0",
   "description": "📍🗺️ Visualize traceroute paths on a map in a Grafana panel",
   "scripts": {
@@ -12,7 +12,7 @@
     "start": "yarn watch",
     "lint": "eslint -c node_modules/@grafana/toolkit/src/config/eslint.plugin.json src --ext js,jsx,ts,tsx"
   },
-  "repository": "github:gowee/traceroute-map-panel",
+  "repository": "github:dionesde/grafana-path",
   "author": "Hung-I Wang <whygowe@gmail.com>",
   "license": "Apache-2.0",
   "bugs": {
