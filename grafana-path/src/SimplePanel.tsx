@@ -20,7 +20,18 @@ export const SimplePanel: React.FC<Props> = ({ options, data, width, height }) =
           height: ${height}px;
         `
       )}*/
-    >
+    > <div className={styles.textBox}>
+      {options.showSeriesCount && (
+          <div
+              className={css`
+              font-size: ${theme.typography.size[options.seriesCountSize]};
+            `}
+          >
+            Number of series: {data.series.length}
+          </div>
+      )}
+      <div>Text option value: {options.text}</div>
+    </div>
       <RLMap
         center={[51.505, -0.09]}
         zoom={1}
@@ -33,18 +44,7 @@ export const SimplePanel: React.FC<Props> = ({ options, data, width, height }) =
       />
     </RLMap>
 
-      <div className={styles.textBox}>
-        {options.showSeriesCount && (
-          <div
-            className={css`
-              font-size: ${theme.typography.size[options.seriesCountSize]};
-            `}
-          >
-            Number of series: {data.series.length}
-          </div>
-        )}
-        <div>Text option value: {options.text}</div>
-      </div>
+
     </div>
   );
 };
