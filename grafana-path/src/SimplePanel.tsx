@@ -3,7 +3,7 @@ import { PanelProps } from '@grafana/data';
 import { SimpleOptions } from 'types';
 import { css, cx } from 'emotion';
 import { stylesFactory, useTheme } from '@grafana/ui';
-
+import { Map as RLMap, TileLayer} from "react-leaflet";
 
 interface Props extends PanelProps<SimpleOptions> {}
 
@@ -20,6 +20,17 @@ export const SimplePanel: React.FC<Props> = ({ options, data, width, height }) =
         `
       )}
     >
+      <RLMap
+        center={[51.505, -0.09]}
+        zoom={1}
+        style={{ position: 'relative', height, width }}
+        options={{ zoomSnap: 0.333, zoomDelta: 0.333 }}
+    >
+      <TileLayer
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="http://osm.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors'
+      />
+    </RLMap>
       <svg
         className={styles.svg}
         width={width}
