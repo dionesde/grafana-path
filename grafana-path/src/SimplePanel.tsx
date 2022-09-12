@@ -10,7 +10,6 @@ interface Props extends PanelProps<SimpleOptions> {}
 
 export const SimplePanel: React.FC<Props> = ({ options, data, width, height }) => {
   const theme = useTheme();
-  console.log(theme);
   const styles = getStyles();
   return (
     <div
@@ -40,7 +39,7 @@ export const SimplePanel: React.FC<Props> = ({ options, data, width, height }) =
         options={{ zoomSnap: 0.333, zoomDelta: 0.333 }}
     >
       <TileLayer
-          url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"
+          url= {getUrl(theme)}
           attribution='&copy; <a href="http://osm.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors'
       />
     </RLMap>
@@ -49,7 +48,9 @@ export const SimplePanel: React.FC<Props> = ({ options, data, width, height }) =
     </div>
   );
 };
-
+function getUrl(theme: any){
+  return "https://{s}.basemaps.cartocdn.com/" + (theme.isLight ? "light" : "dark") + "_all/{z}/{x}/{y}.png";
+}
 const getStyles = stylesFactory(() => {
   return {
     wrapper: css`
