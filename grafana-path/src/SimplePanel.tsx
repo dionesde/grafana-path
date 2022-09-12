@@ -10,6 +10,7 @@ interface Props extends PanelProps<SimpleOptions> {}
 
 export const SimplePanel: React.FC<Props> = ({ options, data, width, height }) => {
   const theme = useTheme();
+  console.log(theme);
   const styles = getStyles();
   return (
     <div
