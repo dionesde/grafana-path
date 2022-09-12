@@ -4,6 +4,7 @@ import { SimpleOptions } from 'types';
 import { css} from 'emotion';
 import { stylesFactory, useTheme } from '@grafana/ui';
 import { Map as RLMap, TileLayer} from "react-leaflet";
+import 'leaflet/dist/leaflet.css';
 
 interface Props extends PanelProps<SimpleOptions> {}
 
