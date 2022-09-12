@@ -1,7 +1,7 @@
 import React from 'react';
 import { PanelProps } from '@grafana/data';
 import { SimpleOptions } from 'types';
-import { css, cx } from 'emotion';
+import { css} from 'emotion';
 import { stylesFactory, useTheme } from '@grafana/ui';
 import { Map as RLMap, TileLayer} from "react-leaflet";
 
@@ -12,13 +12,13 @@ export const SimplePanel: React.FC<Props> = ({ options, data, width, height }) =
   const styles = getStyles();
   return (
     <div
-      className={cx(
+ /*     className={cx(
         styles.wrapper,
         css`
           width: ${width}px;
           height: ${height}px;
         `
-      )}
+      )}*/
     >
       <RLMap
         center={[51.505, -0.09]}
@@ -31,18 +31,6 @@ export const SimplePanel: React.FC<Props> = ({ options, data, width, height }) =
           attribution='&copy; <a href="http://osm.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors'
       />
     </RLMap>
-      <svg
-        className={styles.svg}
-        width={width}
-        height={height}
-        xmlns="http://www.w3.org/2000/svg"
-        xmlnsXlink="http://www.w3.org/1999/xlink"
-        viewBox={`-${width / 2} -${height / 2} ${width} ${height}`}
-      >
-        <g>
-          <circle style={{ fill: `${theme.isLight ? theme.palette.greenBase : theme.palette.blue95}` }} r={100} />
-        </g>
-      </svg>
 
       <div className={styles.textBox}>
         {options.showSeriesCount && (
