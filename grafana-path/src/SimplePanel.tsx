@@ -33,8 +33,8 @@ export const SimplePanel: React.FC<Props> = ({ options, data, width, height }) =
       <div>Text option value: {options.text}</div>
     </div>
       <RLMap
-        center={[51.505, -0.09]}
-        zoom={1}
+        center={[options.lat, options.lng]}
+        zoom={options.zoom}
         style={{ position: 'relative', height, width }}
         options={{ zoomSnap: 0.333, zoomDelta: 0.333 }}
     >
