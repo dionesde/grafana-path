@@ -30,7 +30,7 @@ export const SimplePanel: React.FC<Props> = ({ options, data, width, height }) =
             Number of series: {data.series.length}
           </div>
       )}
-      <div>rrrrr{data.series.entries()}</div>
+      <div>{test(data.series)}</div>
 
       <div>Text option value: {options.text}</div>
     </div>
@@ -52,6 +52,13 @@ export const SimplePanel: React.FC<Props> = ({ options, data, width, height }) =
 };
 function getUrl(theme: any){
   return "https://{s}.basemaps.cartocdn.com/" + (theme.isLight ? "light" : "dark") + "_all/{z}/{x}/{y}.png";
+}
+function test(data: any){
+  let saida = "";
+  for(let i = 0; i < data.length; i++){
+     saida+= " r ";
+  }
+  return saida;
 }
 const getStyles = stylesFactory(() => {
   return {
