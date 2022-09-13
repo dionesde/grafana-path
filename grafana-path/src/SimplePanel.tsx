@@ -62,8 +62,8 @@ const getStyles = stylesFactory(() => {
       left: 0;
     `,
     textBox: css`
-      position: absolute;
-      bottom: 0;
+      position: relative;
+      top: 0;
       left: 0;
       padding: 10px;
     `,
