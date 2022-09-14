@@ -12,13 +12,13 @@ export const plugin = new PanelPlugin<SimpleOptions>(SimplePanel).setPanelOption
       })
       .addNumberInput({
         path: 'lng',
-        name: 'longitude',
+        name: 'Longitude',
         //description: 'Description of panel option',
         defaultValue: -53.718447,
       })
       .addNumberInput({
         path: 'zoom',
-        name: 'Simple text option',
+        name: 'Zoom',
         description: 'Description of panel option',
         defaultValue: 7,
       })
