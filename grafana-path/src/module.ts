@@ -19,7 +19,7 @@ export const plugin = new PanelPlugin<SimpleOptions>(SimplePanel).setPanelOption
       .addNumberInput({
         path: 'zoom',
         name: 'Zoom',
-        description: 'Description of panel option',
+        //description: 'Description of panel option',
         defaultValue: 7,
       })
     .addTextInput({
