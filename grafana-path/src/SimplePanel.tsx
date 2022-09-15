@@ -1,11 +1,11 @@
 import React from 'react';
-import { PanelProps } from '@grafana/data';
+import {DataFrame, PanelProps} from '@grafana/data';
 import { SimpleOptions } from 'types';
 import { css} from 'emotion';
 import { stylesFactory, useTheme } from '@grafana/ui';
 import { Map as RLMap, TileLayer} from "react-leaflet";
 import 'leaflet/dist/leaflet.css';
-
+import {seriesToEntries} from './data';
 interface Props extends PanelProps<SimpleOptions> {}
 
 export const SimplePanel: React.FC<Props> = ({ options, data, width, height }) => {
@@ -30,7 +30,7 @@ export const SimplePanel: React.FC<Props> = ({ options, data, width, height }) =
             Number of series: {data.series.length}
           </div>
       )}
-      <div>{JSON.stringify(data.series[0].fields)}</div>
+      <div>{JSON.stringify(processData(data.series))}</div>
 
       <div>Text option value: {options.text}</div>
     </div>
@@ -53,6 +53,13 @@ export const SimplePanel: React.FC<Props> = ({ options, data, width, height }) =
 function getUrl(theme: any){
   return "https://{s}.basemaps.cartocdn.com/" + (theme.isLight ? "light" : "dark") + "_all/{z}/{x}/{y}.png";
 
+}
+
+
+
+function processData( series: DataFrame[]): any{
+  let entries = seriesToEntries(series);
+  return entries;
 }
 
 const getStyles = stylesFactory(() => {
