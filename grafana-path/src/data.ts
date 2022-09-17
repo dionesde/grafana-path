@@ -1,6 +1,6 @@
 import {DataFrame} from "@grafana/data";
 import _ from "lodash";
-export type DataEntry = [number, number];
+export type DataEntry = [number, number,string];
 
 export interface RoutePoint {
     lat: number;
@@ -27,7 +27,7 @@ export function seriesToEntries(series: DataFrame[]): DataEntry[] {
 export function dataFrameToEntriesUnsorted(frame: DataFrame, idx?: number): DataEntry[] {
     // TODO: full iterator
     let fields: any = {};
-    ['latitude','longitude'].forEach((item) => (fields[item] = null));
+    ['latitude','longitude','color'].forEach((item) => (fields[item] = null));
     for (const field of frame.fields) {
         if (fields.hasOwnProperty(field.name)) {
             fields[field.name] = field.values.toArray();
@@ -55,7 +55,8 @@ export function dataFrameToEntriesUnsorted(frame: DataFrame, idx?: number): Data
 
     let entries = _.zip(
         fields.latitude.map((v: string) => parseFloat(v)),
-        fields.longitude.map((v: string) => parseFloat(v))
+        fields.longitude.map((v: string) => parseFloat(v)),
+        fields.color
     ) as DataEntry[];
     return entries;
 }

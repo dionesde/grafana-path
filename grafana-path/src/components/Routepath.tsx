@@ -2,24 +2,24 @@ import React, { ReactElement } from 'react';
 import {Circle} from "react-leaflet";
 
 export interface RoutePathProps {
-    points: [[number,number]];
+    points: [[number,number,string]];
+    radius?: number
 }
 
 /**
  * Leaflet Markers and Polyline for a single route path, corresponding to one host->dest pair
  */
 function RoutePath(props: RoutePathProps): ReactElement {
-    const {points} = props;
+    const {points,radius} = props;
 
     return (<span>
         {points.map((point) => (
             <Circle
-                center={point}
+                center={[point[0],point[1]]}
                 key={`${round(point[0], 1)},${round(point[1], 1)}`}
-                pathOptions={{ fillColor: 'blue' }}
-                radius={4}>
+                pathOptions={{ fillColor: point[2] ? point[2] : 'blue'}}
+                radius={radius ? radius : 4}>
             </Circle>
-
             )
         )}
     </span>)
