@@ -17,7 +17,7 @@ function RoutePath(props: RoutePathProps): ReactElement {
                 center={point}
                 key={`${round(point[0], 1)},${round(point[1], 1)}`}
                 pathOptions={{ fillColor: 'blue' }}
-                radius={2}>
+                radius={10}>
             </Circle>
 
             )
