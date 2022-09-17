@@ -5,6 +5,7 @@ import { css} from 'emotion';
 import { stylesFactory, useTheme } from '@grafana/ui';
 import { Map as RLMap, TileLayer} from "react-leaflet";
 import 'leaflet/dist/leaflet.css';
+import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css'; // Re-uses images from ~leaflet package
 import {seriesToEntries} from './data';
 import RoutePath from "./components/Routepath";
 interface Props extends PanelProps<SimpleOptions> {}
