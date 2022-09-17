@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react';
-import {CircleMarker} from "react-leaflet";
+import {Circle} from "react-leaflet";
 
 export interface RoutePathProps {
     points: [[number,number,string]];
@@ -14,12 +14,12 @@ function RoutePath(props: RoutePathProps): ReactElement {
 
     return (<span>
         {points.map((point) => (
-            <CircleMarker
+            <Circle
                 center={[point[0],point[1]]}
                 key={`${round(point[0], 1)},${round(point[1], 1)}`}
-                pathOptions={{ color: 'red'}}
-                radius={radius ? radius : 4}>
-            </CircleMarker>
+                pathOptions={{ color: 'red' }}
+                radius={radius ? radius : 2}>
+            </Circle>
             )
         )}
     </span>)
