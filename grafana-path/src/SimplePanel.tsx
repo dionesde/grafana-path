@@ -35,7 +35,7 @@ export const SimplePanel: React.FC<Props> = ({ options, data, width, height }) =
       <RLMap
         center={[options.lat, options.lng]}
         zoom={options.zoom}
-        style={{ position: 'relative',height: height/2,width: width }}
+        style={{ position: 'relative',height: height,width: width }}
         options={{ zoomSnap: 0.333, zoomDelta: 0.333 }}
     >
         <RoutePath points={processData(data.series)}></RoutePath>
