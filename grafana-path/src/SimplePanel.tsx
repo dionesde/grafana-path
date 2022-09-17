@@ -41,7 +41,7 @@ export const SimplePanel: React.FC<Props> = ({ options, data, width, height }) =
         style={{ position: 'relative',height: height/2,width: width }}
         options={{ zoomSnap: 0.333, zoomDelta: 0.333 }}
     >
-        <RoutePath points={[options.lat, options.lng]}></RoutePath>
+        <RoutePath points={processData(data.series)}></RoutePath>
       <TileLayer
           url= {getUrl(theme)}
           attribution='&copy; <a href="http://osm.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors'
