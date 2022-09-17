@@ -31,9 +31,6 @@ export const SimplePanel: React.FC<Props> = ({ options, data, width, height }) =
             Number of series: {data.series.length}
           </div>
       )}
-      <div>{JSON.stringify(processData(data.series))}</div>
-
-      <div>Text option value: {options.text}</div>
     </div>
       <RLMap
         center={[options.lat, options.lng]}
