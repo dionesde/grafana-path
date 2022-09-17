@@ -56,7 +56,7 @@ export function dataFrameToEntriesUnsorted(frame: DataFrame, idx?: number): Data
     let entries = _.zip(
         fields.latitude.map((v: string) => parseFloat(v)),
         fields.longitude.map((v: string) => parseFloat(v)),
-        fields.color
+        fields.color.map((v: string) => v),
     ) as DataEntry[];
     return entries;
 }
