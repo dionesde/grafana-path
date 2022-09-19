@@ -42,8 +42,9 @@ export const SimplePanel: React.FC<Props> = ({ options, data, width, height }) =
         <RoutePath points={processData(data.series)}></RoutePath>
         <Circle
             center={[options.lat,options.lng]}
-            pathOptions={{ color: '#ff0000' }}
-            radius={ 20}>
+            color={'#ff0000'}
+            //pathOptions={{ color: '#ff0000' }}
+            radius={ 200}>
         </Circle>
       <TileLayer
           url= {getUrl(theme)}
