@@ -3,7 +3,7 @@ import {DataFrame, PanelProps} from '@grafana/data';
 import { SimpleOptions } from 'types';
 import { css} from 'emotion';
 import { stylesFactory, useTheme } from '@grafana/ui';
-import {Circle, Map as RLMap, TileLayer} from "react-leaflet";
+import { Map as RLMap, TileLayer} from "react-leaflet";
 import 'leaflet/dist/leaflet.css';
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css'; // Re-uses images from ~leaflet package
 import {seriesToEntries} from './data';
@@ -40,12 +40,6 @@ export const SimplePanel: React.FC<Props> = ({ options, data, width, height }) =
         options={{ zoomSnap: 0.333, zoomDelta: 0.333 }}
     >
         <RoutePath points={processData(data.series)}></RoutePath>
-        <Circle
-            center={[options.lat,options.lng]}
-            color={'#ff0000'}
-            //pathOptions={{ color: '#ff0000' }}
-            radius={ 200}>
-        </Circle>
       <TileLayer
           url= {getUrl(theme)}
           attribution='&copy; <a href="http://osm.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors'
