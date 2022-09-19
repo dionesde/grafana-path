@@ -10,7 +10,7 @@ interface CurveProps extends PathProps {
     option: any;
 }
 
-export class Curve extends Path<CurveProps, L.Curve> {
+class Curve extends Path<CurveProps, L.Curve> {
     createLeafletElement(props: CurveProps) {
         const { positions, option /*, ...options*/ } = props;
         return L.curve(positions, option /*, this.getOptions(options)*/);

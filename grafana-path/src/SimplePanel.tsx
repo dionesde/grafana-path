@@ -8,7 +8,7 @@ import 'leaflet/dist/leaflet.css';
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css'; // Re-uses images from ~leaflet package
 import {seriesToEntries} from './data';
 import RoutePath from "./components/Routepath";
-import {Curve} from "./Curve"
+import Line from "./components/line";
 interface Props extends PanelProps<SimpleOptions> {}
 
 export const SimplePanel: React.FC<Props> = ({ options, data, width, height }) => {
@@ -45,7 +45,13 @@ export const SimplePanel: React.FC<Props> = ({ options, data, width, height }) =
           url= {getUrl(theme)}
           attribution='&copy; <a href="http://osm.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors'
       />
-        <Curve positions={[[options.lat,options.lng],[0,0]]} option={{color: 'blue'}} />
+        <Line positions={['M',[50.54136296522163,28.520507812500004],
+          'C',[52.214338608258224,28.564453125000004],
+          [48.45835188280866,33.57421875000001],
+          [50.680797145321655,33.83789062500001],
+          'V',[48.40003249610685],
+          'L',[47.45839225859763,31.201171875],
+          [48.40003249610685,28.564453125000004],'Z']}  />
     </RLMap>
 
 
