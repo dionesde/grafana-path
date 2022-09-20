@@ -45,10 +45,10 @@ export const SimplePanel: React.FC<Props> = ({ options, data, width, height }) =
           url= {getUrl(theme)}
           attribution='&copy; <a href="http://osm.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors'
       />
-        <Line positions={['M',[50.14874640066278,14.106445312500002],
-          'Q',[51.67255514839676,16.303710937500004],
-          [50.14874640066278,18.676757812500004],
-          'T',[49.866316729538674,25.0927734375]]}  />
+        <Line positions={['M',[46.86019101567027,-29.047851562500004],
+          'Q',[50.48547354578499,-23.818359375000004],
+          [46.70973594407157,-19.907226562500004],
+          'T',[46.6795944656402,-11.0302734375]]}  />
     </RLMap>
 
 

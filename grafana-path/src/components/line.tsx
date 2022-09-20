@@ -13,7 +13,7 @@ const Line: React.FC<LineProps> = (props: LineProps) => {
     const {positions} = props;
 
     return (
-        <Curve positions={positions} option={{animate: {duration: 3000, iterations: Infinity},color:'red'}}/>
+        <Curve positions={positions} option={{dashArray: '5',animate: {duration: 3000, iterations: Infinity},color:'red'}}/>
     )
 }
 const SimpleSplineMemo = React.memo(Line);
