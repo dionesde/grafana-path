@@ -4,7 +4,7 @@
  */
 .map-overlay {
     font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
-    width: 25%;
+    color: attr(data-color);
     padding: 10px;
     background-color: rgba(255, 255, 255, 0.618);
 }
