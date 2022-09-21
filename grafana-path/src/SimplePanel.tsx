@@ -36,7 +36,7 @@ export const SimplePanel: React.FC<Props> = ({ options, data, width, height }) =
         <Control position="topright">
           <div className='map-overlay'>
             <label>{JSON.stringify(days)} {indexDate}</label>
-            <input type='range' value="0" step="1" min="0" max={days.length} onChange={(value) => {
+            <input type='range'  step="1" min="0" max={days.length} onChange={(value) => {
               console.log('teste')
               indexDate = Number(value.target.value)
             }
