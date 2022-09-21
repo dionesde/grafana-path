@@ -37,19 +37,19 @@ function round(number: number, ndigits: number): number {
     return Math.round((number + Number.EPSILON) * factor) / factor;
 }
 function loadData(points: any[]): any[]{
-    function isArray(points: any[], element: any): boolean{
+    /*function isArray(points: any[], element: any): boolean{
         for(let i =0; i < points.length; i++){
             if(points[i].label === element[3]){
                 return true;
             }
         }
         return false;
-    }
+    }*/
     const legends: any[] = [];
     for(let i =0; i < points.length; i++){
-        if(!isArray(legends,points[i])){
-            legends.push({lat:points[0],lng:points[1],label:points[i][3], color: points[i][2]})
-        }
+        //if(!isArray(legends,points[i])){
+            legends.push({lat:points[i][0],lng:points[i][1],label:points[i][3], color: points[i][2]})
+       // }
     }
     return legends;
 }
