@@ -76,7 +76,10 @@ export class SimplePanel extends Component<Props> {
                 this.indexDate = Number(e.target.value);
               }
               } />
-              <Button variant="primary" size="md" onClick={e => {alert('testeeeeeß')}} title="Fit the map view to all points">
+              <Button variant="primary" size="md" onClick={e => {
+                alert('testeeeeeß' + this.indexDate)
+                this.indexDate = this.indexDate + 1
+              }} title="Fit the map view to all points">
 
                 Fit
               </Button>
