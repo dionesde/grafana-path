@@ -2,7 +2,19 @@
     height: 100%
 }
  */
-
+.map-overlay {
+    font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    width: 25%;
+    padding: 10px;
+}
+.map-overlay input {
+    background-color: transparent;
+    display: inline-block;
+    width: 100%;
+    position: relative;
+    margin: 0;
+    cursor: ew-resize;
+}
 .host-tray {
     line-height: 1;
     /* for toggler positioning */
@@ -19,7 +31,7 @@
 .host-item {
     color: attr(data-color);
     /* gainsboro */
-    background-color: rgba(255, 255, 255, 0.372);
+    background-color: rgba(255, 255, 255, 0.618);
     border-radius: 5px;
     padding: 0.1em 0.6em 0.1em 0.6em;
     color: rgba(0, 0, 0, 0.8);
@@ -28,12 +40,6 @@
     transition: 0.3s;
 }
 
-.host-item:hover {
-    background-color: rgba(255, 255, 255, 0.618);
-    cursor: pointer;
-    user-select: none;
-    color: rgba(0, 0, 0, 1.0);
-}
 
 .host-list .host-arrow {
     margin-left: 0.5em;

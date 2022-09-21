@@ -30,6 +30,13 @@ export const SimplePanel: React.FC<Props> = ({ options, data, width, height }) =
         <Control position="bottomleft">
           <Legend points={processData(data.series)}/>
         </Control>
+        <Control position="topright">
+          <div className='map-overlay'>
+            <label>teste</label>
+            <input type='range' />
+          </div>
+
+        </Control>
         <Line positions={['M',[46.86019101567027,-29.047851562500004],
           'Q',[50.48547354578499,-23.818359375000004],
           [46.70973594407157,-19.907226562500004],
