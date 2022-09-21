@@ -12,12 +12,12 @@ import {Line} from "./components/line";
 import Control from 'react-leaflet-control';
 import Legend from "./components/Legend";
 interface Props extends PanelProps<SimpleOptions> {}
-let indexDate: number;
+let indexDate: string;
 export const SimplePanel: React.FC<Props> = ({ options, data, width, height }) => {
   const theme = useTheme();
   const output = processData(data.series)
   const days = loadDate(output);
- console.log('testando');
+
   return (
       <RLMap
         center={[options.lat, options.lng]}
@@ -37,7 +37,7 @@ export const SimplePanel: React.FC<Props> = ({ options, data, width, height }) =
           <div className='map-overlay'>
             <label>{JSON.stringify(days)} {indexDate}</label>
             <input type='range'  step="1" min="0" max={days.length} onChange={e => {
-              alert('testeeeee ' + e.target.value)
+              indexDate = e.target.value;
             }
             } />
             <Button variant="primary" size="md" onClick={e => {alert('testeeeeeß')}} title="Fit the map view to all points">
