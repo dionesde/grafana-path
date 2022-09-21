@@ -15,7 +15,7 @@ function Legend(props: RoutePathProps): ReactElement {
                 <ul className="host-list">
                     {legends.map(([point]) => {
                         return (
-                            <li key={`${round(point[0], 1)},${round(point[1], 1)}`} className="host-item" >
+                            <li key={`${round(point.lat, 1)},${round(point.lng, 1)}`} className="host-item" >
                                 <span className="host-arrow" style={{ color: point.color }}>
                                     <Icon name="arrow-right" />
                                 </span>
@@ -49,7 +49,7 @@ function loadData(points: any[]): any[]{
     const legends: any[] = [];
     for(let i =0; i < points.length; i++){
         if(!isArray(legends,points[i])){
-            legends.push({label:points[i][3], color: points[i][2]})
+            legends.push({lat:points[0],lng:points[1],label:points[i][3], color: points[i][2]})
         }
     }
     return legends;
