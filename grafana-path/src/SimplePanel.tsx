@@ -16,16 +16,16 @@ interface Props extends PanelProps<SimpleOptions> {}
 
 export const SimplePanel: React.FC<Props> = ({ options, data, width, height }) => {
   const theme = useTheme();
-  const styles = getStyles();
+  //const styles = getStyles();
   return (
-    <div
- /*     className={cx(
+   /* <div
+      className={cx(
         styles.wrapper,
         css`
           width: ${width}px;
           height: ${height}px;
         `
-      )}*/
+      )}
     > <div className={styles.textBox}>
       {options.showSeriesCount && (
           <div
@@ -36,7 +36,7 @@ export const SimplePanel: React.FC<Props> = ({ options, data, width, height }) =
             Number of series: {data.series.length}
           </div>
       )}
-    </div>
+    </div>*/
       <RLMap
         center={[options.lat, options.lng]}
         zoom={options.zoom}
@@ -56,9 +56,6 @@ export const SimplePanel: React.FC<Props> = ({ options, data, width, height }) =
           [46.70973594407157,-19.907226562500004],
           'T',[46.6795944656402,-11.0302734375]]}  />
     </RLMap>
-
-
-    </div>
   );
 };
 function getUrl(theme: any){
