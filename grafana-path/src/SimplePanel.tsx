@@ -17,6 +17,7 @@ export const SimplePanel: React.FC<Props> = ({ options, data, width, height }) =
   const theme = useTheme();
   const output = processData(data.series)
   const days = loadDate(output);
+  let indexDate = 0;
   return (
       <RLMap
         center={[options.lat, options.lng]}
@@ -34,8 +35,8 @@ export const SimplePanel: React.FC<Props> = ({ options, data, width, height }) =
         </Control>
         <Control position="topright">
           <div className='map-overlay'>
-            <label>{JSON.stringify(days)}</label>
-            <input type='range' step="1" min="0" max={days.length}/>
+            <label>{JSON.stringify(days)} {indexDate}</label>
+            <input type='range' step="1" min="0" max={days.length} onChange={(value) => {indexDate = Number(value.target.value)}} />
           </div>
 
         </Control>
