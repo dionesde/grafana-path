@@ -44,7 +44,7 @@
 
 .host-list .host-label, .host-list .dest-label {
     display: inline-block;
-    width: 8em;
+    max-width: 12em;
     overflow: hidden;
     /* text-overflow: ellipsis; */
     text-align: center;
