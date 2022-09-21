@@ -1,7 +1,7 @@
 import React from 'react';
 import {DataFrame, PanelProps} from '@grafana/data';
 import { SimpleOptions } from 'types';
-import {useTheme } from '@grafana/ui';
+import {Button, useTheme} from '@grafana/ui';
 import { Map as RLMap, TileLayer} from "react-leaflet";
 import 'leaflet/dist/leaflet.css';
 import './painel.css';
@@ -40,6 +40,10 @@ export const SimplePanel: React.FC<Props> = ({ options, data, width, height }) =
               indexDate = Number(e.target.value)
             }
             } />
+            <Button variant="primary" size="md" onClick={e => {alert('testeeeeeß')}} title="Fit the map view to all points">
+              {/* FIX: @grafana/ui Button keeps active state */}
+              Fit
+            </Button>
           </div>
 
         </Control>
