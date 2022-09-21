@@ -15,6 +15,8 @@ interface Props extends PanelProps<SimpleOptions> {}
 
 export const SimplePanel: React.FC<Props> = ({ options, data, width, height }) => {
   const theme = useTheme();
+  const output = processData(data.series)
+  const days = loadDate(output);
   return (
       <RLMap
         center={[options.lat, options.lng]}
@@ -22,7 +24,7 @@ export const SimplePanel: React.FC<Props> = ({ options, data, width, height }) =
         style={{ position: 'relative',height: height,width: width }}
         options={{ zoomSnap: 0.333, zoomDelta: 0.333 }}
     >
-        <RoutePath points={processData(data.series)}></RoutePath>
+        <RoutePath points={output}></RoutePath>
       <TileLayer
           url= {getUrl(theme)}
           attribution='&copy; <a href="http://osm.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors'
@@ -32,8 +34,8 @@ export const SimplePanel: React.FC<Props> = ({ options, data, width, height }) =
         </Control>
         <Control position="topright">
           <div className='map-overlay'>
-            <label>teste</label>
-            <input type='range' />
+            <label>{JSON.stringify(days)}</label>
+            <input type='range' step="1" min="0" max={days.length}/>
           </div>
 
         </Control>
@@ -49,7 +51,23 @@ function getUrl(theme: any){
 
 }
 
-
+function loadDate(points: any[]): any[]{
+  function isArray(points: any[], element: any): boolean{
+    for(let i =0; i < points.length; i++){
+      if(points[i] === element[4]){
+        return true;
+      }
+    }
+    return false;
+  }
+  const days: any[] = [];
+  for(let i =0; i < points.length; i++){
+    if(!isArray(days,points[i])){
+      days.push(points[i][4]);
+    }
+  }
+  return days;
+}
 
 function processData( series: DataFrame[]): any{
   let entries = seriesToEntries(series);
