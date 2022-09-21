@@ -17,7 +17,7 @@ export const SimplePanel: React.FC<Props> = ({ options, data, width, height }) =
   const theme = useTheme();
   const output = processData(data.series)
   const days = loadDate(output);
-
+ console.log('testando');
   return (
       <RLMap
         center={[options.lat, options.lng]}
