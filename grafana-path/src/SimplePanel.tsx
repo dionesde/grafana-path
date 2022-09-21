@@ -73,8 +73,8 @@ export class SimplePanel extends Component<Props, State> {
           </Control>
           <Control position="topright">
             <div className='map-overlay'>
-              <label>{JSON.stringify(days)} {this.state.indexDate}</label>
-              <input type='range'  step="1" min="0" max={days.length} onChange={e => {
+              <label>{days[this.state.indexDate]}</label>
+              <input type='range' defaultValue={0} step="1" min="0" max={days.length} onChange={e => {
                 const indexDate = Number(e.target.value);
                 this.setState({indexDate});
               }
