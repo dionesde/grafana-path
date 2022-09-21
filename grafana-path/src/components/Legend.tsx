@@ -17,10 +17,10 @@ function Legend(props: RoutePathProps): ReactElement {
                         return (
                             <li key={`${round(point.lat, 1)},${round(point.lng, 1)}`} className="host-item" >
                                 <span className="host-arrow" style={{ color: point.color }}>
-                                    <Icon name="arrow-right" />
+                                    <Icon name="circle" />
                                 </span>
                                 <span className="dest-label" title={point.label}>
-                                    {point.label} hhhh
+                                    {point.label}
                                 </span>
                             </li>
                         );
@@ -37,19 +37,19 @@ function round(number: number, ndigits: number): number {
     return Math.round((number + Number.EPSILON) * factor) / factor;
 }
 function loadData(points: any[]): any[]{
-    /*function isArray(points: any[], element: any): boolean{
+    function isArray(points: any[], element: any): boolean{
         for(let i =0; i < points.length; i++){
             if(points[i].label === element[3]){
                 return true;
             }
         }
         return false;
-    }*/
+    }
     const legends: any[] = [];
     for(let i =0; i < points.length; i++){
-        //if(!isArray(legends,points[i])){
+        if(!isArray(legends,points[i])){
             legends.push({lat:points[i][0],lng:points[i][1],label:points[i][3], color: points[i][2]})
-       // }
+        }
     }
     return legends;
 }
