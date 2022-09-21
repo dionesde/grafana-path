@@ -26,7 +26,6 @@ function Legend(props: RoutePathProps): ReactElement {
                         );
                     })}
                 </ul>
-        )
     </div>)
 }
 
