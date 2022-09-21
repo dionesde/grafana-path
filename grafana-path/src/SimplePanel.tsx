@@ -13,12 +13,14 @@ import Control from 'react-leaflet-control';
 import Legend from "./components/Legend";
 interface Props extends PanelProps<SimpleOptions> {}
 
-
-export class SimplePanel extends Component<Props> {
+interface State {
   indexDate: number;
+}
+
+export class SimplePanel extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
-    this.indexDate = 0
+    this.state= {indexDate : 0};
   }
   componentDidUpdate(prevProps: Props): void {
 
@@ -71,14 +73,14 @@ export class SimplePanel extends Component<Props> {
           </Control>
           <Control position="topright">
             <div className='map-overlay'>
-              <label>{JSON.stringify(days)} {this.indexDate}</label>
+              <label>{JSON.stringify(days)} {this.state.indexDate}</label>
               <input type='range'  step="1" min="0" max={days.length} onChange={e => {
-                this.indexDate = Number(e.target.value);
+                const indexDate = Number(e.target.value);
+                this.setState({indexDate});
               }
               } />
               <Button variant="primary" size="md" onClick={e => {
-                alert('testeeeeeß' + this.indexDate)
-                this.indexDate = this.indexDate + 1
+                alert('testeeeeeß' + this.state.indexDate)
               }} title="Fit the map view to all points">
 
                 Fit
