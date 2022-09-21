@@ -37,7 +37,7 @@ export const SimplePanel: React.FC<Props> = ({ options, data, width, height }) =
           <div className='map-overlay'>
             <label>{JSON.stringify(days)} {indexDate}</label>
             <input type='range'  step="1" min="0" max={days.length} onChange={e => {
-              alert('testeeeee 22222')
+              alert('testeeeee ' + e.target.value)
             }
             } />
             <Button variant="primary" size="md" onClick={e => {alert('testeeeeeß')}} title="Fit the map view to all points">
