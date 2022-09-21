@@ -10,17 +10,17 @@ export interface RoutePathProps {
  */
 function Legend(props: RoutePathProps): ReactElement {
     const {points} = props;
-    const legends: any[] = loadData(points);
+    //const legends: any[] = loadData(points);
     return ( <div className="host-tray">
                 <ul className="host-list">
-                    {legends.map(([point]) => {
+                    {points.map((point) => {
                         return (
-                            <li key={`${round(point.lat, 1)},${round(point.lng, 1)}`} className="host-item" >
-                                <span className="host-arrow" style={{ color: point.color }}>
+                            <li key={`${round(point[0], 1)},${round(point[1], 1)}`} className="host-item" >
+                                <span className="host-arrow" style={{ color: point[2] }}>
                                     <Icon name="arrow-right" />
                                 </span>
-                                <span className="dest-label" title={point.label}>
-                                    {point.label}
+                                <span className="dest-label" title={point[3]}>
+                                    {point[3]}
                                 </span>
                             </li>
                         );
@@ -36,7 +36,7 @@ function round(number: number, ndigits: number): number {
     // https://stackoverflow.com/questions/11832914/round-to-at-most-2-decimal-places-only-if-necessary
     const factor = 10 ** ndigits;
     return Math.round((number + Number.EPSILON) * factor) / factor;
-}
+}/*
 function loadData(points: any[]): any[]{
     function isArray(points: any[], element: any): boolean{
         for(let i =0; i < points.length; i++){
@@ -53,4 +53,4 @@ function loadData(points: any[]): any[]{
         }
     }
     return legends;
-}
+}*/
