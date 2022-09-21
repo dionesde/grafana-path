@@ -27,7 +27,7 @@ export function seriesToEntries(series: DataFrame[]): DataEntry[] {
 export function dataFrameToEntriesUnsorted(frame: DataFrame, idx?: number): DataEntry[] {
     // TODO: full iterator
     let fields: any = {};
-    ['latitude','longitude','color'].forEach((item) => (fields[item] = null));
+    ['latitude','longitude','color', 'label'].forEach((item) => (fields[item] = null));
     for (const field of frame.fields) {
         if (fields.hasOwnProperty(field.name)) {
             fields[field.name] = field.values.toArray();
