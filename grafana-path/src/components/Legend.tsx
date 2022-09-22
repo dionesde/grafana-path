@@ -15,7 +15,7 @@ function Legend(props: RoutePathProps): ReactElement {
                 <ul className="host-list">
                     {legends.map((point) => {
                         return (
-                            <li key={`${round(point.lat, 1)},${round(point.lng, 1)}`} className="host-item" >
+                            <li key={point.label} className="host-item" >
                                 <span className="host-arrow" style={{ color: point.color }}>
                                     <Icon name="circle" />
                                 </span>
@@ -31,11 +31,6 @@ function Legend(props: RoutePathProps): ReactElement {
 
 export default Legend;
 
-function round(number: number, ndigits: number): number {
-    // https://stackoverflow.com/questions/11832914/round-to-at-most-2-decimal-places-only-if-necessary
-    const factor = 10 ** ndigits;
-    return Math.round((number + Number.EPSILON) * factor) / factor;
-}
 function loadData(points: any[]): any[]{
     function isArray(points: any[], element: any): boolean{
         for(let i =0; i < points.length; i++){
