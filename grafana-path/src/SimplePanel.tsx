@@ -10,7 +10,6 @@ import RoutePath from "./components/Routepath";
 import {Line} from "./components/line";
 import Control from 'react-leaflet-control';
 import Legend from "./components/Legend";
-import {Icon} from "@grafana/ui";
 
 interface Props extends PanelProps<SimpleOptions> {}
 
@@ -129,7 +128,9 @@ export class SimplePanel extends Component<Props, State> {
                 this.setState({indexDate, view, play: false});
               }
               } />
-                <Icon className="icon" onClick={()=>{this.setState({ play: true});}} name="play" />
+                <span className="icon" onClick={()=>{this.setState({ play: true});}} >
+                  &rtrif;
+                </span>
                </div>
             </div>
 
