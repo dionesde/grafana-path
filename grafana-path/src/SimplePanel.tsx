@@ -14,15 +14,15 @@ interface Props extends PanelProps<SimpleOptions> {}
 
 interface State {
   indexDate: number;
-  output: [[number,number,string, string,string]];
+  output: any[];
   days: any[];
-  data: [[number,number,string, string,string]];
+  data: any[];
 }
 
 export class SimplePanel extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
-    const output = this.processData(props.data.series);
+    const output = this.processData(this.props.data.series);
     const days = this.loadDate(output);
     const data = this.getDate(days[0]);
     this.state= {
@@ -39,15 +39,15 @@ export class SimplePanel extends Component<Props, State> {
     let entries = seriesToEntries(series);
     return entries;
   }
-  getDate(date: string): [[number,number,string, string,string]] {
+  getDate(date: string): any[] {
     const points = this.state.output;
-    const output: any[] = [] ;
+    const output: any[] = [];
     points.forEach(el => {
       if(el[4] === date){
         output.push(el);
       }
     });
-    return output as [[number,number,string, string,string]];
+    return output;
   }
   loadDate(points: any[]): any[]{
     function isArray(points: any[], element: any): boolean{
@@ -71,8 +71,10 @@ export class SimplePanel extends Component<Props, State> {
 
   }
   render(){
-    const { options, width, height } = this.props;
+    const { options, data, width, height } = this.props;
     const theme = false;
+    const output = this.processData(data.series)
+    const days = this.loadDate(output);
 
     return (
         <RLMap
@@ -81,18 +83,18 @@ export class SimplePanel extends Component<Props, State> {
             style={{ position: 'relative',height: height,width: width }}
             options={{ zoomSnap: 0.333, zoomDelta: 0.333 }}
         >
-          <RoutePath points={this.state.data}></RoutePath>
+          <RoutePath points={output}></RoutePath>
           <TileLayer
               url= {this.getUrl(theme)}
               attribution='&copy; <a href="http://osm.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors'
           />
           <Control position="bottomleft">
-            <Legend points={this.state.data}/>
+            <Legend points={output}/>
           </Control>
           <Control position="topright">
             <div className='map-overlay'>
-              <label>{this.state.days[this.state.indexDate]}</label>
-              <input type='range' defaultValue={0} step="1" min="0" max={this.state.days.length -1} onChange={e => {
+              <label>{days[this.state.indexDate]}</label>
+              <input type='range' defaultValue={0} step="1" min="0" max={days.length -1} onChange={e => {
                 const indexDate = Number(e.target.value);
                 this.setState({indexDate});
               }
