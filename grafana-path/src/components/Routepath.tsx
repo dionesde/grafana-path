@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react';
 import { CircleMarker} from "react-leaflet";
 
 export interface RoutePathProps {
-    points: [[number,number,string, string]];
+    points: [[number,number,string, string,string]];
     radius?: number
 }
 

@@ -1,7 +1,6 @@
 import React,{Component} from 'react';
 import {DataFrame, PanelProps} from '@grafana/data';
 import { SimpleOptions } from 'types';
-import {Button} from '@grafana/ui';
 import { Map as RLMap, TileLayer} from "react-leaflet";
 import 'leaflet/dist/leaflet.css';
 import './painel.css';
@@ -15,19 +14,40 @@ interface Props extends PanelProps<SimpleOptions> {}
 
 interface State {
   indexDate: number;
+  output: [[number,number,string, string,string]];
+  days: any[];
+  data: [[number,number,string, string,string]];
 }
 
 export class SimplePanel extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
-    this.state= {indexDate : 0};
+    const output = this.processData(this.props.data.series);
+    const days = this.loadDate(output);
+    const data = this.getDate(days[0]);
+    this.state= {
+      indexDate : 0,
+      output,
+      days,
+      data
+    };
   }
   componentDidUpdate(prevProps: Props): void {
 
   }
-  processData( series: DataFrame[]): any{
+  processData( series: DataFrame[]): [[number,number,string, string,string]]{
     let entries = seriesToEntries(series);
-    return entries;
+    return entries as [[number,number,string, string,string]];
+  }
+  getDate(date: string): [[number,number,string, string,string]] {
+    const points = this.state.output;
+    const output: any[] = [] ;
+    points.forEach(el => {
+      if(el[4] === date){
+        output.push(el);
+      }
+    });
+    return output as [[number,number,string, string,string]];
   }
   loadDate(points: any[]): any[]{
     function isArray(points: any[], element: any): boolean{
@@ -51,10 +71,8 @@ export class SimplePanel extends Component<Props, State> {
 
   }
   render(){
-    const { options, data, width, height } = this.props;
+    const { options, width, height } = this.props;
     const theme = false;
-    const output = this.processData(data.series)
-    const days = this.loadDate(output);
 
     return (
         <RLMap
@@ -63,28 +81,22 @@ export class SimplePanel extends Component<Props, State> {
             style={{ position: 'relative',height: height,width: width }}
             options={{ zoomSnap: 0.333, zoomDelta: 0.333 }}
         >
-          <RoutePath points={output}></RoutePath>
+          <RoutePath points={this.state.data}></RoutePath>
           <TileLayer
               url= {this.getUrl(theme)}
               attribution='&copy; <a href="http://osm.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors'
           />
           <Control position="bottomleft">
-            <Legend points={output}/>
+            <Legend points={this.state.output}/>
           </Control>
           <Control position="topright">
             <div className='map-overlay'>
-              <label>{days[this.state.indexDate]}</label>
-              <input type='range' defaultValue={0} step="1" min="0" max={days.length -1} onChange={e => {
+              <label>{this.state.days[this.state.indexDate]}</label>
+              <input type='range' defaultValue={0} step="1" min="0" max={this.state.days.length -1} onChange={e => {
                 const indexDate = Number(e.target.value);
                 this.setState({indexDate});
               }
               } />
-              <Button variant="primary" size="md" onClick={e => {
-                alert('testeeeeeß' + this.state.indexDate)
-              }} title="Fit the map view to all points">
-
-                Fit
-              </Button>
             </div>
 
           </Control>
