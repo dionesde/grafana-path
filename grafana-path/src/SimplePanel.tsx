@@ -87,7 +87,7 @@ export class SimplePanel extends Component<Props, State> {
               attribution='&copy; <a href="http://osm.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors'
           />
           <Control position="bottomleft">
-            <Legend points={this.state.output}/>
+            <Legend points={this.state.data}/>
           </Control>
           <Control position="topright">
             <div className='map-overlay'>
