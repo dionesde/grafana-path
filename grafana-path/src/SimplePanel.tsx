@@ -42,7 +42,7 @@ export class SimplePanel extends Component<Props, State> {
     if(prevProps.data.series !== this.state.series){
       this.output = this.processData(prevProps.data.series);
       const days = this.loadDate(this.output);
-      const view = this.getDate(days[0]);
+      const view = days[this.state.indexDate] ? this.getDate(days[this.state.indexDate]) : this.getDate(days[0]);
       this.setState({view,days,output: this.output,series: prevProps.data.series})
     }
   }
