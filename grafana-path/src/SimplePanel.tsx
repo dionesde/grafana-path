@@ -96,7 +96,7 @@ export class SimplePanel extends Component<Props, State> {
           </Control>
           <Control position="topright">
             <div className='map-overlay'>
-              <label>{days[this.state.indexDate]}</label>
+              <span>{days[this.state.indexDate]}</span>
               <input className="slider" type='range' defaultValue={0} step="1" min="0" max={days.length -1} onChange={e => {
                 const indexDate = Number(e.target.value);
                 const view = this.getDate(this.state.days[indexDate]);
