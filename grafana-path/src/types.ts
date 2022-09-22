@@ -5,6 +5,7 @@ export interface SimpleOptions {
   lng: number;
   zoom: number;
   text: string;
+  delay: number
   showSeriesCount: boolean;
   seriesCountSize: SeriesSize;
 }

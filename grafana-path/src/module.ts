@@ -22,6 +22,12 @@ export const plugin = new PanelPlugin<SimpleOptions>(SimplePanel).setPanelOption
         //description: 'Description of panel option',
         defaultValue: 7,
       })
+      .addNumberInput({
+          path: 'delay',
+          name: 'Delay',
+          //description: 'Description of panel option',
+          defaultValue: 1000,
+      })
     .addTextInput({
       path: 'text',
       name: 'Simple text option',

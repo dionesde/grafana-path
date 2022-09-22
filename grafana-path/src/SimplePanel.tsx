@@ -49,7 +49,7 @@ export class SimplePanel extends Component<Props, State> {
       const view = this.getDate(this.state.days[indexDate]);
       this.setState({indexDate,view});
     }
-    this.time = setTimeout(()=>{this.animatioin()},2000);
+    this.time = setTimeout(()=>{this.animatioin()},this.props.options.delay);
   }
 
   componentDidUpdate(prevProps: Props): void {
