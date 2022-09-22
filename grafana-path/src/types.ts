@@ -7,6 +7,7 @@ export interface SimpleOptions {
   text: string;
   delay: number;
   autoplay: boolean;
+  radius: number;
   showSeriesCount: boolean;
   seriesCountSize: SeriesSize;
 }

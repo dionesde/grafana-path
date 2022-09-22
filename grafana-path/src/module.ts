@@ -23,6 +23,12 @@ export const plugin = new PanelPlugin<SimpleOptions>(SimplePanel).setPanelOption
         defaultValue: 7,
       })
       .addNumberInput({
+          path: 'radius',
+          name: 'Radius',
+          //description: 'Description of panel option',
+          defaultValue: 2,
+      })
+      .addNumberInput({
           path: 'delay',
           name: 'Delay',
           //description: 'Description of panel option',
