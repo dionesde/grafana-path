@@ -25,7 +25,7 @@ export class SimplePanel extends Component<Props, State> {
     const {data} = this.props;
     const output = this.processData(data.series);
     const days = this.loadDate(output);
-    const view = output;
+    const view = this.getDate('');
     this.state= {
       indexDate : 0,
       output,
@@ -40,7 +40,7 @@ export class SimplePanel extends Component<Props, State> {
     let entries = seriesToEntries(series);
     return entries;
   }
-  getDate(date: string): any {
+  getDate(date: string) {
     const points = this.state.output;
     /*const view: any[] = [];
     for(let i =0; i < points.length; i++){
