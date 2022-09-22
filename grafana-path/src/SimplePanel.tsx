@@ -23,7 +23,7 @@ interface State {
 
 export class SimplePanel extends Component<Props, State> {
   output: any;
-  play =false;
+  play = true;
   time: any;
 
   constructor(props: Props) {
