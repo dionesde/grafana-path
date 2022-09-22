@@ -16,7 +16,7 @@ function RoutePath(props: RoutePathProps): ReactElement {
         {points.map((point) => (
             <CircleMarker
                 center={[point[0],point[1]]}
-                key={`${round(point[0], 1)},${round(point[1], 1)}`}
+                key={`${point[0]},${point[1]}`}
                 color = {point[2]}
                 //pathOptions={{ color: 'red' }}
                 radius={radius ? radius : 2}>
@@ -28,8 +28,3 @@ function RoutePath(props: RoutePathProps): ReactElement {
 
 export default RoutePath;
 
-function round(number: number, ndigits: number): number {
-    // https://stackoverflow.com/questions/11832914/round-to-at-most-2-decimal-places-only-if-necessary
-    const factor = 10 ** ndigits;
-    return Math.round((number + Number.EPSILON) * factor) / factor;
-}
