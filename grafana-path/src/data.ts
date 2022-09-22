@@ -1,6 +1,6 @@
 import {DataFrame} from "@grafana/data";
 import _ from "lodash";
-export type DataEntry = [number, number,string, string, string];
+export type DataEntry = [number, number,string, string, string, string];
 
 export interface Point {
     id?: string
@@ -28,7 +28,8 @@ function formatdata(data: DataEntry[]): Point[]{
             lng: data[i][1],
             color: data[i][2],
             label: data[i][3],
-            day: data[i][4]
+            day: data[i][4],
+            id: data[i][5]
         });
     }
     return output;
@@ -36,7 +37,7 @@ function formatdata(data: DataEntry[]): Point[]{
 export function dataFrameToEntriesUnsorted(frame: DataFrame, idx?: number): DataEntry[] {
     // TODO: full iterator
     let fields: any = {};
-    ['latitude','longitude','color', 'label','day'].forEach((item) => (fields[item] = null));
+    ['latitude','longitude','color', 'label','day', 'id'].forEach((item) => (fields[item] = null));
     for (const field of frame.fields) {
         if (fields.hasOwnProperty(field.name)) {
             fields[field.name] = field.values.toArray();
@@ -67,7 +68,8 @@ export function dataFrameToEntriesUnsorted(frame: DataFrame, idx?: number): Data
         fields.longitude.map((v: string) => parseFloat(v)),
         fields.color.map((v: string) => v),
         fields.label.map((v: string) => v),
-        fields.day.map((v: string) => v)
+        fields.day.map((v: string) => v),
+        fields.id.map((v: string) => v)
     ) as DataEntry[];
     return entries;
 }
