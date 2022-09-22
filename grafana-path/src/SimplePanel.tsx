@@ -41,7 +41,7 @@ export class SimplePanel extends Component<Props, State> {
     return entries;
   }
   getDate(date: string) {
-    return this.state.output;
+    return this.processData(this.props.data.series);
     /*const view: any[] = [];
     for(let i =0; i < points.length; i++){
       if(points[i][4] === date){
