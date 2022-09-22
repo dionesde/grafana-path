@@ -46,7 +46,8 @@ export class SimplePanel extends Component<Props, State> {
     if(this.play){
       let indexDate = this.state.indexDate;
       indexDate = (indexDate + 1) % this.state.days.length;
-      this.setState({indexDate});
+      const view = this.getDate(this.state.days[indexDate]);
+      this.setState({indexDate,view});
     }
     this.time = setTimeout(()=>{this.animatioin()},2000);
   }
