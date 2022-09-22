@@ -25,7 +25,7 @@ export class SimplePanel extends Component<Props, State> {
     const {data} = this.props;
     const output = this.processData(data.series);
     const days = this.loadDate(output);
-    const view = this.getDate('');
+    const view = output;
     this.state= {
       indexDate : 0,
       output,
