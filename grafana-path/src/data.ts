@@ -35,7 +35,6 @@ function formatdata(data: DataEntry[]): Point[]{
     return output;
 }
 export function dataFrameToEntriesUnsorted(frame: DataFrame, idx?: number): DataEntry[] {
-    // TODO: full iterator
     let fields: any = {};
     ['latitude','longitude','color', 'label','day', 'id'].forEach((item) => (fields[item] = null));
     for (const field of frame.fields) {
