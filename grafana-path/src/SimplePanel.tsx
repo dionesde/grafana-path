@@ -14,8 +14,8 @@ interface Props extends PanelProps<SimpleOptions> {}
 
 interface State {
   indexDate: number;
-  output?: any[];
-  //days: any[];
+  output: any[];
+  days: any[];
   //data: any[];
 }
 
@@ -24,12 +24,12 @@ export class SimplePanel extends Component<Props, State> {
     super(props);
     const {data} = this.props;
     const output = this.processData(data.series);
-    //const days = this.loadDate(output);
+    const days = this.loadDate(output);
     //const data = this.getDate(days[0]);
     this.state= {
       indexDate : 0,
       output,
-     // days,
+      days,
     //  data
     };
   }
@@ -75,7 +75,7 @@ export class SimplePanel extends Component<Props, State> {
     const { options, width, height } = this.props;
     const theme = false;
     const output = this.state.output as any;
-    const days = this.loadDate(output);
+    const days = this.state.days;
 
     return (
         <RLMap
