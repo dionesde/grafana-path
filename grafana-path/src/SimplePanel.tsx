@@ -84,7 +84,8 @@ export class SimplePanel extends Component<Props, State> {
   render(){
     const { options, width, height } = this.props;
     const theme = false;
-    const output = this.state.view as any;
+    const viewer = this.state.view as any;
+    const legend = this.state.output as any;
     const days = this.state.days;
 
     return (
@@ -94,13 +95,13 @@ export class SimplePanel extends Component<Props, State> {
             style={{ position: 'relative',height: height,width: width }}
             options={{ zoomSnap: 0.333, zoomDelta: 0.333 }}
         >
-          <RoutePath points={output}></RoutePath>
+          <RoutePath points={viewer}></RoutePath>
           <TileLayer
               url= {this.getUrl(theme)}
               attribution='&copy; <a href="http://osm.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors'
           />
           <Control position="bottomleft">
-            <Legend points={output}/>
+            <Legend points={legend}/>
           </Control>
           <Control position="topright">
             <div className='map-overlay'>
