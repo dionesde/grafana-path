@@ -2,6 +2,12 @@
     height: 100%
 }
  */
+.slider{
+    outline: none;
+    -webkit-appearance: none;
+    background-color: rgba(255, 255, 255, 0.3);
+    height: 5px;
+}
 .map-overlay {
     font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
     color: rgba(0, 0, 0, 0.8);
