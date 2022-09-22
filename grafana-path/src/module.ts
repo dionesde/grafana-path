@@ -33,7 +33,7 @@ export const plugin = new PanelPlugin<SimpleOptions>(SimplePanel).setPanelOption
           name: 'Autoplay',
           defaultValue: false,
       })
-    .addTextInput({
+    /*.addTextInput({
       path: 'text',
       name: 'Simple text option',
       description: 'Description of panel option',
@@ -65,5 +65,5 @@ export const plugin = new PanelPlugin<SimpleOptions>(SimplePanel).setPanelOption
         ],
       },
       showIf: config => config.showSeriesCount,
-    });
+    });*/
 });
