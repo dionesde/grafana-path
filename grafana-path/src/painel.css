@@ -20,7 +20,7 @@
     height: 5px;
 }
 .map-overlay .icon{
-    padding-left: 10px;
+    margin-left: 10px;
     color: #3D71D9
 }
 .host-tray {
