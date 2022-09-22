@@ -10,6 +10,7 @@ import RoutePath from "./components/Routepath";
 import {Line} from "./components/line";
 import Control from 'react-leaflet-control';
 import Legend from "./components/Legend";
+
 interface Props extends PanelProps<SimpleOptions> {}
 
 interface State {
@@ -22,6 +23,8 @@ interface State {
 
 export class SimplePanel extends Component<Props, State> {
   output: any;
+  play =false;
+  time: any;
 
   constructor(props: Props) {
     super(props);
@@ -36,6 +39,16 @@ export class SimplePanel extends Component<Props, State> {
       view,
       series: data.series
     };
+    this.animatioin();
+  }
+
+  animatioin(){
+    if(this.play){
+      let indexDate = this.state.indexDate;
+      indexDate = (indexDate + 1) % this.state.days.length;
+      this.setState({indexDate});
+    }
+    this.time = setTimeout(()=>{this.animatioin()},2000);
   }
 
   componentDidUpdate(prevProps: Props): void {
