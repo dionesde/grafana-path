@@ -28,6 +28,11 @@ export const plugin = new PanelPlugin<SimpleOptions>(SimplePanel).setPanelOption
           //description: 'Description of panel option',
           defaultValue: 1000,
       })
+      .addBooleanSwitch({
+          path: 'autoplay',
+          name: 'Autoplay',
+          defaultValue: false,
+      })
     .addTextInput({
       path: 'text',
       name: 'Simple text option',

@@ -39,7 +39,7 @@ export class SimplePanel extends Component<Props, State> {
       days,
       view,
       series: data.series,
-      play: false
+      play: this.props.options.autoplay
     };
     this.animatioin();
   }
