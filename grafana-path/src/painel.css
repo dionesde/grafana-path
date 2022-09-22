@@ -11,7 +11,6 @@
 }
 .map-overlay .slider {
     display: inline-block;
-    width: 100%;
     position: relative;
     margin: 0;
     cursor: ew-resize;
@@ -19,6 +18,9 @@
     -webkit-appearance: none;
     background-color: rgba(255, 255, 255, 0.3);
     height: 5px;
+}
+.map-overlay .icon{
+    padding-left: 10px;
 }
 .host-tray {
     line-height: 1;

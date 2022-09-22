@@ -122,13 +122,15 @@ export class SimplePanel extends Component<Props, State> {
           <Control position="topright">
             <div className='map-overlay'>
               <span>{days[this.state.indexDate]}</span>
-              <input className="slider" type='range' defaultValue={0} step="1" min="0" max={days.length -1} onChange={e => {
+               <div>
+                 <input className="slider" type='range' defaultValue={0} step="1" min="0" max={days.length -1} onChange={e => {
                 const indexDate = Number(e.target.value);
                 const view = this.getDate(this.state.days[indexDate]);
                 this.setState({indexDate, view, play: false});
               }
               } />
-              <Icon onClick={()=>{alert('teste')}} name="play" />
+                <Icon className="icon" onClick={()=>{this.setState({ play: true});}} name="play" />
+               </div>
             </div>
 
           </Control>
