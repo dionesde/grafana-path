@@ -46,7 +46,7 @@ export class SimplePanel extends Component<Props, State> {
     const points =  this.output;
     const view: any[] = [];
     for(let i =0; i < points.length; i++){
-      if(points[i][4] === date){
+      if(points[i].day === date){
         view.push(points[i]);
       }
     }
@@ -55,7 +55,7 @@ export class SimplePanel extends Component<Props, State> {
   loadDate(points: any[]): any[]{
     function isArray(points: any[], element: any): boolean{
       for(let i =0; i < points.length; i++){
-        if(points[i] === element[4]){
+        if(points[i] === element.day){
           return true;
         }
       }
@@ -64,7 +64,7 @@ export class SimplePanel extends Component<Props, State> {
     const days: any[] = [];
     for(let i =0; i < points.length; i++){
       if(!isArray(days,points[i])){
-        days.push(points[i][4]);
+        days.push(points[i].day);
       }
     }
     return days;

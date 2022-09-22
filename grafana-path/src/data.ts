@@ -1,7 +1,9 @@
 import {DataFrame} from "@grafana/data";
+import _ from "lodash";
+export type DataEntry = [number, number,string, string, string];
 
 export interface Point {
-    id: string
+    id?: string
     lat: number;
     lng: number;
     color: string,
@@ -11,14 +13,27 @@ export interface Point {
 
 export function seriesToEntries(series: DataFrame[]): Point[] {
     // TODO: how to make this function generic?
-    let entries: Point[] = [];
+    let entries: DataEntry[] = [];
     for (const [idx, frame] of series.entries()) {
         entries = entries.concat(dataFrameToEntriesUnsorted(frame, idx));
     }
     //entries.sort((a, b) => a[2] - b[2]);
-    return entries;
+    return formatdata(entries);
 }
-export function dataFrameToEntriesUnsorted(frame: DataFrame, idx?: number): Point {
+function formatdata(data: DataEntry[]): Point[]{
+    const output: Point[] = [];
+    for(let i = 0; i < data.length; i++){
+        output.push({
+            lat: data[i][0],
+            lng: data[i][1],
+            color: data[i][2],
+            label: data[i][3],
+            day: data[i][4]
+        });
+    }
+    return output;
+}
+export function dataFrameToEntriesUnsorted(frame: DataFrame, idx?: number): DataEntry[] {
     // TODO: full iterator
     let fields: any = {};
     ['latitude','longitude','color', 'label','day'].forEach((item) => (fields[item] = null));
@@ -47,5 +62,12 @@ export function dataFrameToEntriesUnsorted(frame: DataFrame, idx?: number): Poin
         throw new Error(message);
     }
 
-    return fields as Point;
+    let entries = _.zip(
+        fields.latitude.map((v: string) => parseFloat(v)),
+        fields.longitude.map((v: string) => parseFloat(v)),
+        fields.color.map((v: string) => v),
+        fields.label.map((v: string) => v),
+        fields.day.map((v: string) => v)
+    ) as DataEntry[];
+    return entries;
 }
