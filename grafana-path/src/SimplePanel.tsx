@@ -17,6 +17,7 @@ interface State {
   output: any[];
   days: any[];
   view?: any[];
+  series: any
 }
 
 export class SimplePanel extends Component<Props, State> {
@@ -32,12 +33,18 @@ export class SimplePanel extends Component<Props, State> {
       indexDate : 0,
       output: this.output,
       days,
-      view
+      view,
+      series: data.series
     };
   }
 
   componentDidUpdate(prevProps: Props): void {
-
+    if(prevProps.data.series !== this.state.series){
+      this.output = this.processData(prevProps.data.series);
+      const days = this.loadDate(this.output);
+      const view = this.getDate(days[0]);
+      this.setState({view,days,output: this.output,series: prevProps.data.series})
+    }
   }
   processData( series: DataFrame[]): any{
     let entries = seriesToEntries(series);
