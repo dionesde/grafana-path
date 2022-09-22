@@ -35,9 +35,9 @@ export class SimplePanel extends Component<Props, State> {
   componentDidUpdate(prevProps: Props): void {
 
   }
-  processData( series: DataFrame[]): [[number,number,string, string,string]]{
+  processData( series: DataFrame[]): any{
     let entries = seriesToEntries(series);
-    return entries as [[number,number,string, string,string]];
+    return entries;
   }
   getDate(date: string): [[number,number,string, string,string]] {
     const points = this.state.output;
