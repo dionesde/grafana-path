@@ -46,5 +46,13 @@ function loadData(points: any[]): any[]{
             legends.push(points[i])
         }
     }
-    return legends;
+    return legends.sort(function (a, b) {
+        if (a.label < b.label) {
+            return -1;
+        }
+        if (a.label > b.label) {
+            return 1;
+        }
+        return 0;
+    });;
 }
