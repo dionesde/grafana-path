@@ -35,8 +35,13 @@ export class SimplePanel extends Component<Props, State> {
       view
     };
   }
-  componentDidUpdate(prevProps: Props): void {
 
+  componentDidUpdate(prevProps: Props): void {
+    const {data} = prevProps;
+    this.output = this.processData(data.series);
+    const days = this.loadDate(this.output);
+    const view = this.getDate(days[this.state.indexDate]);
+    this.setState({output: this.output, view,days, indexDate:0});
   }
   processData( series: DataFrame[]): any{
     let entries = seriesToEntries(series);
