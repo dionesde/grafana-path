@@ -22,7 +22,7 @@ interface State {
 export class SimplePanel extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
-    const output = this.processData(this.props.data.series);
+    const output = this.processData(props.data.series);
     const days = this.loadDate(output);
     const data = this.getDate(days[0]);
     this.state= {
