@@ -42,13 +42,13 @@ export class SimplePanel extends Component<Props, State> {
   }
   getDate(date: string): any {
     const points = this.state.output;
-    const output: any[] = [];
+    const view: any[] = [];
     for(let i =0; i < points.length; i++){
       if(points[i][4] === date){
-        output.push(points[i]);
+        view.push(points[i]);
       }
     }
-    return output;
+    return view;
   }
   loadDate(points: any[]): any[]{
     function isArray(points: any[], element: any): boolean{
