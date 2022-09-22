@@ -43,11 +43,11 @@ export class SimplePanel extends Component<Props, State> {
   getDate(date: string): any {
     const points = this.state.output;
     const output: any[] = [];
-    points.forEach(el => {
-      if(el[4] === date){
-        output.push(el);
+    for(let i =0; i < points.length; i++){
+      if(points[i][4] === date){
+        output.push(points[i]);
       }
-    });
+    }
     return output;
   }
   loadDate(points: any[]): any[]{
