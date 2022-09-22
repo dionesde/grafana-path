@@ -10,6 +10,7 @@ import RoutePath from "./components/Routepath";
 import {Line} from "./components/line";
 import Control from 'react-leaflet-control';
 import Legend from "./components/Legend";
+import {Icon} from "@grafana/ui";
 
 interface Props extends PanelProps<SimpleOptions> {}
 
@@ -18,12 +19,12 @@ interface State {
   output: any[];
   days: any[];
   view?: any[];
-  series: any
+  series: any;
+  play: boolean
 }
 
 export class SimplePanel extends Component<Props, State> {
   output: any;
-  play = true;
   time: any;
 
   constructor(props: Props) {
@@ -37,13 +38,14 @@ export class SimplePanel extends Component<Props, State> {
       output: this.output,
       days,
       view,
-      series: data.series
+      series: data.series,
+      play: false
     };
     this.animatioin();
   }
 
   animatioin(){
-    if(this.play){
+    if(this.state.play){
       let indexDate = this.state.indexDate;
       indexDate = (indexDate + 1) % this.state.days.length;
       const view = this.getDate(this.state.days[indexDate]);
@@ -123,9 +125,10 @@ export class SimplePanel extends Component<Props, State> {
               <input className="slider" type='range' defaultValue={0} step="1" min="0" max={days.length -1} onChange={e => {
                 const indexDate = Number(e.target.value);
                 const view = this.getDate(this.state.days[indexDate]);
-                this.setState({indexDate, view});
+                this.setState({indexDate, view, play: false});
               }
               } />
+              <Icon onClick={()=>{alert('teste')}} name="play" />
             </div>
 
           </Control>
