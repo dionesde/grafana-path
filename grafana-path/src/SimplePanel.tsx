@@ -14,7 +14,7 @@ interface Props extends PanelProps<SimpleOptions> {}
 
 interface State {
   indexDate: number;
-  //output: any[];
+  output?: any[];
   //days: any[];
   //data: any[];
 }
@@ -22,12 +22,13 @@ interface State {
 export class SimplePanel extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
-    //const output = this.processData(this.props.data.series);
+    const {data} = this.props;
+    const output = this.processData(data.series);
     //const days = this.loadDate(output);
     //const data = this.getDate(days[0]);
     this.state= {
       indexDate : 0,
-     // output,
+      output,
      // days,
     //  data
     };
@@ -39,7 +40,7 @@ export class SimplePanel extends Component<Props, State> {
     let entries = seriesToEntries(series);
     return entries;
   }
- /* getDate(date: string): any[] {
+  /*getDate(date: string): any {
     const points = this.state.output;
     const output: any[] = [];
     points.forEach(el => {
@@ -71,9 +72,9 @@ export class SimplePanel extends Component<Props, State> {
 
   }
   render(){
-    const { options, data, width, height } = this.props;
+    const { options, width, height } = this.props;
     const theme = false;
-    const output = this.processData(data.series)
+    const output = this.state.output as any;
     const days = this.loadDate(output);
 
     return (
