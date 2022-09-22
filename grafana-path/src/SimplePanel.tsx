@@ -27,7 +27,7 @@ export class SimplePanel extends Component<Props, State> {
     const {data} = this.props;
     this.output = this.processData(data.series);
     const days = this.loadDate(this.output);
-    const view = this.getDate('');
+    const view = this.getDate(days[0]);
     this.state= {
       indexDate : 0,
       output: this.output,
@@ -43,13 +43,14 @@ export class SimplePanel extends Component<Props, State> {
     return entries;
   }
   getDate(date: string) {
-    return this.output;
-    /*const view: any[] = [];
+    const points =  this.output;
+    const view: any[] = [];
     for(let i =0; i < points.length; i++){
       if(points[i][4] === date){
         view.push(points[i]);
       }
-    }*/
+    }
+    return view;
   }
   loadDate(points: any[]): any[]{
     function isArray(points: any[], element: any): boolean{
