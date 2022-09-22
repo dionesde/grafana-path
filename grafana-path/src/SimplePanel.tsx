@@ -16,7 +16,7 @@ interface State {
   indexDate: number;
   output: any[];
   days: any[];
-  //data: any[];
+  view: any[];
 }
 
 export class SimplePanel extends Component<Props, State> {
@@ -25,12 +25,12 @@ export class SimplePanel extends Component<Props, State> {
     const {data} = this.props;
     const output = this.processData(data.series);
     const days = this.loadDate(output);
-    //const data = this.getDate(days[0]);
+    const view = this.getDate(days[0]);
     this.state= {
       indexDate : 0,
       output,
       days,
-    //  data
+      view
     };
   }
   componentDidUpdate(prevProps: Props): void {
@@ -40,7 +40,7 @@ export class SimplePanel extends Component<Props, State> {
     let entries = seriesToEntries(series);
     return entries;
   }
-  /*getDate(date: string): any {
+  getDate(date: string): any {
     const points = this.state.output;
     const output: any[] = [];
     points.forEach(el => {
@@ -49,7 +49,7 @@ export class SimplePanel extends Component<Props, State> {
       }
     });
     return output;
-  }*/
+  }
   loadDate(points: any[]): any[]{
     function isArray(points: any[], element: any): boolean{
       for(let i =0; i < points.length; i++){
@@ -74,7 +74,7 @@ export class SimplePanel extends Component<Props, State> {
   render(){
     const { options, width, height } = this.props;
     const theme = false;
-    const output = this.state.output as any;
+    const output = this.state.view as any;
     const days = this.state.days;
 
     return (
