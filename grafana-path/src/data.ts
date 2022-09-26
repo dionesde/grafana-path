@@ -9,6 +9,8 @@ export interface Point {
     color: string,
     label: string,
     day: string
+    from?: Point[],
+    to?: Point[]
 }
 
 export function seriesToEntries(series: DataFrame[]): Point[] {
