@@ -9,7 +9,7 @@ export interface Point {
     color: string,
     label: string,
     day: string
-    from?: Point[],
+    from: Point[],
     to?: Point[]
 }
 
@@ -24,21 +24,45 @@ export function seriesToEntries(series: DataFrame[]): Point[] {
 }
 function formatdata(data: DataEntry[]): Point[]{
     const output: Point[] = [];
+
+    function isArray(id: string, day: string): boolean{
+        for(let j=0; j < output.length; j++){
+            if(id === output[j].id && day === output[j].day){
+                return true;
+            }
+        }
+        return false;
+    }
+    function insertFrom(point: Point){
+        for(let j=0; j < output.length; j++){
+            if(point.id === output[j].id && point.day === output[j].day){
+                output[j].from.push(point);
+            }
+        }
+    }
+//create list
     for(let i = 0; i < data.length; i++){
-        output.push({
-            lat: data[i][0],
-            lng: data[i][1],
-            color: data[i][2],
-            label: data[i][3],
-            day: data[i][4],
-            id: data[i][5]
-        });
+        if(!isArray(data[i][5], data[i][4])){
+            output.push({
+                lat: data[i][0],
+                lng: data[i][1],
+                color: data[i][2],
+                label: data[i][3],
+                day: data[i][4],
+                id: data[i][5],
+                from: []
+            });
+        }
+    }
+    //create path
+    for(let i = 0; i < output.length; i++){
+        insertFrom(output[i]);
     }
     return output;
 }
 export function dataFrameToEntriesUnsorted(frame: DataFrame, idx?: number): DataEntry[] {
     let fields: any = {};
-    ['latitude','longitude','color', 'label','day', 'id'].forEach((item) => (fields[item] = null));
+    ['latitude','longitude','color', 'label','day', 'id', 'from'].forEach((item) => (fields[item] = null));
     for (const field of frame.fields) {
         if (fields.hasOwnProperty(field.name)) {
             fields[field.name] = field.values.toArray();
