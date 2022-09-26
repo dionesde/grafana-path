@@ -51,7 +51,7 @@ function formatdata(data: DataEntry[]): Point[]{
                 day: data[i][4],
                 id: data[i][5],
                 from: []
-            });
+            }as Point);
         }
     }
     //create path
