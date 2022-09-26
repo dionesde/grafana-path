@@ -111,7 +111,7 @@ export class SimplePanel extends Component<Props, State> {
             style={{ position: 'relative',height: height,width: width }}
             options={{ zoomSnap: 0.333, zoomDelta: 0.333 }}
         >
-          <RoutePath points={viewer} radius={this.props.options.radius}></RoutePath>
+          <RoutePath points={viewer} radius={this.props.options.radius} onclick={(point: any)=>{alert('testando '+ point.label)}}></RoutePath>
           <TileLayer
               url= {this.getUrl(theme)}
               attribution='&copy; <a href="http://osm.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors'

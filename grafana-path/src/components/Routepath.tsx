@@ -4,14 +4,15 @@ import {Point} from "../data";
 
 export interface RoutePathProps {
     points: Point[];
-    radius?: number
+    radius?: number;
+    onclick?: any;
 }
 
 /**
  * Leaflet Markers and Polyline for a single route path, corresponding to one host->dest pair
  */
 function RoutePath(props: RoutePathProps): ReactElement {
-    const {points,radius} = props;
+    const {points,radius,onclick} = props;
 
     return (<span>
         {points.map((point) => (
@@ -19,7 +20,7 @@ function RoutePath(props: RoutePathProps): ReactElement {
                 center={[point.lat,point.lng]}
                 key={point.id}
                 color = {point.color}
-                onclick={() => alert('teste' + point.label)}
+                onclick={() => {onclick(point)}}
                 //pathOptions={{ color: 'red' }}
                 radius={radius ? radius : 2}>
             </CircleMarker>
