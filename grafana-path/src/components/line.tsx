@@ -3,17 +3,19 @@ import Curve from "../Curve";
 
 
 export interface LineProps {
-    positions: any;
+    to: number[],
+    from: number[]
 }
 
 /**
  * Leaflet Markers and Polyline for a single route path, corresponding to one host->dest pair
  */
 const Line: React.FC<LineProps> = (props: LineProps) => {
-    const {positions} = props;
+    const {from, to} = props;
 
     return (
-        <Curve positions={positions} option={{dashArray: '5',animate: {duration: 20000, iterations: Infinity},color:'red'}}/>
+        <Curve positions={['M',[from[0],from[1]],
+            'L',[to[0],to[1]]]} option={{dashArray: '5',animate: {duration: 20000, iterations: Infinity},color:'red'}}/>
     )
 }
 const SimpleSplineMemo = React.memo(Line);
