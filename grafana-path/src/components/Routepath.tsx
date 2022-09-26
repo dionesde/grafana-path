@@ -19,7 +19,7 @@ function RoutePath(props: RoutePathProps): ReactElement {
                 center={[point.lat,point.lng]}
                 key={point.id}
                 color = {point.color}
-                onclick={() => alert('teste')}
+                onclick={() => alert('teste' + point.label)}
                 //pathOptions={{ color: 'red' }}
                 radius={radius ? radius : 2}>
             </CircleMarker>
