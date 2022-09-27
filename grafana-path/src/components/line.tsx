@@ -15,7 +15,7 @@ const Line: React.FC<LineProps> = (props: LineProps) => {
 
     return (
         <Curve positions={['M',[from[0],from[1]],
-            'L',[to[0],to[1]]]} option={{dashArray: '5',animate: {duration: 20000, iterations: Infinity},color:'red'}}/>
+            'T',[to[0],to[1]],'Z']} option={{dashArray: '5',animate: {duration: 20000, iterations: Infinity},color:'red'}}/>
     )
 }
 const SimpleSplineMemo = React.memo(Line);
