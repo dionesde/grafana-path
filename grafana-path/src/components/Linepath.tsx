@@ -1,9 +1,8 @@
 import React, { ReactElement } from 'react';
-import {Point} from "../data";
 import {Line} from "./line";
 
 export interface LinePathProps {
-    points: Point[];
+    points: any[];
 }
 
 /**
@@ -14,8 +13,8 @@ function LinePath(props: LinePathProps): ReactElement {
 
     return (<span>
         {points.map((point,key) => (
-            <Line key = {key} from={[point.from[0].lat,point.from[0].lng]}
-                  to={[point.lat,point.lng]}  />
+            <Line key = {key} from={[point.from[0], point.from[1]]}
+                  to={[point.to[0],point.to[1]]}  />
             )
         )}
     </span>)
