@@ -1,6 +1,6 @@
 import {DataFrame} from "@grafana/data";
 import _ from "lodash";
-export type DataEntry = [number, number,string, string, string, string];
+export type DataEntry = [number, number,string, string, string, string, string];
 
 export interface Point {
     id?: string
@@ -33,13 +33,15 @@ function formatdata(data: DataEntry[]): Point[]{
         }
         return false;
     }
-    function insertFrom(point: Point){
+    function getEl(id: string, day: string): Point{
         for(let j=0; j < output.length; j++){
-            if(point.id === output[j].id && point.day === output[j].day){
-                output[j].from.push(point);
+            if(id === output[j].id && day === output[j].day){
+                return output[j];
             }
         }
+        return output[0];
     }
+
 //create list
     for(let i = 0; i < data.length; i++){
         if(!isArray(data[i][5], data[i][4])){
@@ -55,8 +57,9 @@ function formatdata(data: DataEntry[]): Point[]{
         }
     }
     //create path
-    for(let i = 0; i < output.length; i++){
-        insertFrom(output[i]);
+    for(let i = 0; i < data.length; i++){
+        const elemnt = getEl(data[i][5], data[i][4]);
+        elemnt?.from.push(getEl(data[i][6],data[i][4]));
     }
     return output;
 }
@@ -94,7 +97,8 @@ export function dataFrameToEntriesUnsorted(frame: DataFrame, idx?: number): Data
         fields.color.map((v: string) => v),
         fields.label.map((v: string) => v),
         fields.day.map((v: string) => v),
-        fields.id.map((v: string) => v)
+        fields.id.map((v: string) => v),
+        fields.from.map((v: string) => v)
     ) as DataEntry[];
     return entries;
 }
