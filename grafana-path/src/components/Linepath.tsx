@@ -14,7 +14,7 @@ function LinePath(props: LinePathProps): ReactElement {
     return (<span>
         {points.map((point,key) => (
             <Line key = {key} from={[point.from[0], point.from[1]]}
-                  to={[point.to[0],point.to[1]]} color={point.Color} />
+                  to={[point.to[0],point.to[1]]} color={point.color} />
             )
         )}
     </span>)
