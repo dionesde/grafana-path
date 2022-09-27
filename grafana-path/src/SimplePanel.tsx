@@ -135,7 +135,7 @@ export class SimplePanel extends Component<Props, State> {
                  <input className="slider" type='range' defaultValue={0} step="1" min="0" max={days.length -1} onChange={e => {
                 const indexDate = Number(e.target.value);
                 const view = this.getDate(this.state.days[indexDate]);
-                this.setState({indexDate, view, play: false});
+                this.setState({indexDate, view, play: false, lView: []});
               }
               } />
                 <Icon className="icon" onClick={()=>{this.setState({ play: !this.state.play});}} name={this.state.play ? 'pause' : 'play'} />
