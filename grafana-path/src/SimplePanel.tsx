@@ -5,7 +5,7 @@ import { Map as RLMap, TileLayer} from "react-leaflet";
 import 'leaflet/dist/leaflet.css';
 import './painel.css';
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css'; // Re-uses images from ~leaflet package
-import {seriesToEntries} from './data';
+import {Point, seriesToEntries} from './data';
 import RoutePath from "./components/Routepath";
 import Control from 'react-leaflet-control';
 import Legend from "./components/Legend";
@@ -18,6 +18,7 @@ interface State {
   indexDate: number;
   output: any[];
   days: any[];
+  lView?: any;
   view?: any[];
   series: any;
   play: boolean
@@ -38,6 +39,7 @@ export class SimplePanel extends Component<Props, State> {
       output: this.output,
       days,
       view,
+      lView: [] as any,
       series: data.series,
       play: this.props.options.autoplay
     };
@@ -97,10 +99,16 @@ export class SimplePanel extends Component<Props, State> {
     return "https://{s}.basemaps.cartocdn.com/" + (theme ? "light" : "dark") + "_all/{z}/{x}/{y}.png";
 
   }
+  loadLine(point: Point){
+    const output = [];
+    output.push({to: [point.lat,point.lng],from: [point.from[0].lat, point.from[0].lng]});
+    this.setState({lView: output});
+  }
   render(){
     const { options, width, height } = this.props;
     const theme = false;
     const viewer = this.state.view as any;
+    const lView  = this.state.lView as any[];
     const legend = this.state.output as any;
     const days = this.state.days;
 
@@ -111,8 +119,8 @@ export class SimplePanel extends Component<Props, State> {
             style={{ position: 'relative',height: height,width: width }}
             options={{ zoomSnap: 0.333, zoomDelta: 0.333 }}
         >
-          <RoutePath points={viewer} radius={this.props.options.radius} onclick={(point: any)=>{alert('testando '+ viewer.length)}}></RoutePath>
-          <LinePath points={viewer}/>
+          <RoutePath points={viewer} radius={this.props.options.radius} onclick={(point: any)=>{this.loadDate(point)}}></RoutePath>
+          <LinePath points={lView}/>
           <TileLayer
               url= {this.getUrl(theme)}
               attribution='&copy; <a href="http://osm.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors'
