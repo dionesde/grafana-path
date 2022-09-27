@@ -13,9 +13,10 @@ export interface LineProps {
 const Line: React.FC<LineProps> = (props: LineProps) => {
     const {from, to} = props;
     const durationTime = Math.sqrt(Math.pow(from[0] - to[0], 2) + Math.pow(from[1] - to[1], 2))
+    alert(durationTime)
     return (
         <Curve positions={['M',[from[0],from[1]],
-            'L',[to[0],to[1]]]} option={{animate: {duration: (durationTime * 70), iterations: Infinity},color:'red'}}/>
+            'L',[to[0],to[1]]]} option={{animate: {duration: (durationTime * 700), iterations: Infinity},color:'red'}}/>
     )
 }
 const SimpleSplineMemo = React.memo(Line);
