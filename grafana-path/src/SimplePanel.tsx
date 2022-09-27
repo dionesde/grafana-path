@@ -101,7 +101,7 @@ export class SimplePanel extends Component<Props, State> {
   }
   loadLine(point: Point){
     const output = [];
-    output.push({to: [point.lat,point.lng],from: [point.from[0].lat, point.from[0].lng]});
+    output.push({to: [point.lat,point.lng],from: [point.from[0].lat, point.from[0].lng], color: point.from[0].color});
     this.setState({lView: output});
   }
   render(){
