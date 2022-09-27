@@ -7,10 +7,10 @@ import './painel.css';
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css'; // Re-uses images from ~leaflet package
 import {seriesToEntries} from './data';
 import RoutePath from "./components/Routepath";
-import {Line} from "./components/line";
 import Control from 'react-leaflet-control';
 import Legend from "./components/Legend";
 import {Icon} from "@grafana/ui";
+import LinePath from "./components/Linepath";
 
 interface Props extends PanelProps<SimpleOptions> {}
 
@@ -112,6 +112,7 @@ export class SimplePanel extends Component<Props, State> {
             options={{ zoomSnap: 0.333, zoomDelta: 0.333 }}
         >
           <RoutePath points={viewer} radius={this.props.options.radius} onclick={(point: any)=>{alert('testando '+ point.from[0].day)}}></RoutePath>
+          <LinePath points={viewer}/>
           <TileLayer
               url= {this.getUrl(theme)}
               attribution='&copy; <a href="http://osm.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors'
@@ -134,8 +135,6 @@ export class SimplePanel extends Component<Props, State> {
             </div>
 
           </Control>
-          <Line from={[46.86019101567027,-29.047851562500004]}
-            to={[50.48547354578499,-23.818359375000004]}  />
         </RLMap>
     );
   }
