@@ -35,7 +35,7 @@ function formatdata(data: DataEntry[]): Point[]{
     }
     function getEl(id: string, day: string): Point{
         for(let j=0; j < output.length; j++){
-            if(id === output[j].id && day === output[j].day){
+            if(id === output[j].id ){
                 return output[j];
             }
         }
