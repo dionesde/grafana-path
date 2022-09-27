@@ -111,7 +111,7 @@ export class SimplePanel extends Component<Props, State> {
             style={{ position: 'relative',height: height,width: width }}
             options={{ zoomSnap: 0.333, zoomDelta: 0.333 }}
         >
-          <RoutePath points={viewer} radius={this.props.options.radius} onclick={(point: any)=>{alert('testando '+ point.from[0].day)}}></RoutePath>
+          <RoutePath points={viewer} radius={this.props.options.radius} onclick={(point: any)=>{alert('testando '+ viewer.length)}}></RoutePath>
           <LinePath points={viewer}/>
           <TileLayer
               url= {this.getUrl(theme)}
