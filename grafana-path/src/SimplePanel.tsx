@@ -97,7 +97,7 @@ export class SimplePanel extends Component<Props, State> {
   }
   getUrl(theme: any){
     //return "https://{s}.basemaps.cartocdn.com/" + (theme ? "light" : "dark") + "_all/{z}/{x}/{y}.png";
-    return "http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}";
+    return "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}";
   }
   loadLine(point: Point){
     const output = [];
