@@ -45,6 +45,9 @@ function formatdata(data: DataEntry[]): Point[]{
 //create list
     for(let i = 0; i < data.length; i++){
         if(!isArray(data[i][5], data[i][4])){
+            if(isNaN(data[i][0]) || isNaN(data[i][1])){
+                continue;
+            }
             output.push({
                 lat: data[i][0],
                 lng: data[i][1],
