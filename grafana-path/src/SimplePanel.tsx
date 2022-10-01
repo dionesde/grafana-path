@@ -96,8 +96,8 @@ export class SimplePanel extends Component<Props, State> {
     return days;
   }
   getUrl(theme: any){
-    return "https://{s}.basemaps.cartocdn.com/" + (theme ? "light" : "dark") + "_all/{z}/{x}/{y}.png";
-
+    //return "https://{s}.basemaps.cartocdn.com/" + (theme ? "light" : "dark") + "_all/{z}/{x}/{y}.png";
+    return "http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}";
   }
   loadLine(point: Point){
     const output = [];
