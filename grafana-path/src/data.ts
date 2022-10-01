@@ -37,7 +37,7 @@ function formatdata(data: DataEntry[]): Point[]{
     function getEl(output: Point[], elemnt: Point): Point[]{
         const from = [] as Point[];
         for(let j=0; j < output.length; j++){
-            if(output[j].direction === 'origin' && elemnt.day === output[j].day){
+            if(output[j].direction === 'origin' && elemnt.day === output[j].day && elemnt.id !== output[j].id){
                 from.push(output[j]);
             }
         }
