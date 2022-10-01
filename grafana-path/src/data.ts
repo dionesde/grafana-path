@@ -10,7 +10,8 @@ export interface Point {
     label: string,
     day: string
     from: Point[],
-    to?: Point[]
+    to?: Point[],
+    direction: string
 }
 
 export function seriesToEntries(series: DataFrame[]): Point[] {
@@ -33,13 +34,14 @@ function formatdata(data: DataEntry[]): Point[]{
         }
         return false;
     }
-    function getEl(id: string, day: string): Point{
+    function getEl(output: Point[], elemnt: Point): Point[]{
+        const from = [] as Point[];
         for(let j=0; j < output.length; j++){
-            if(id === output[j].id ){
-                return output[j];
+            if(output[j].direction === 'origin' && elemnt.day === output[j].day){
+                from.push(output[j]);
             }
         }
-        return output[0];
+        return from;
     }
 
 //create list
@@ -55,14 +57,14 @@ function formatdata(data: DataEntry[]): Point[]{
                 label: data[i][3],
                 day: data[i][4],
                 id: data[i][5],
-                from: []
+                direction: data[i][6],
+                from: [] as Point[]
             }as Point);
         }
     }
     //create path
-    for(let i = 0; i < data.length; i++){
-        const elemnt = getEl(data[i][5], data[i][4]);
-        elemnt?.from.push(getEl(data[i][6],data[i][4]));
+    for(let i = 0; i < output.length; i++){
+        output[i].from = getEl(output, output[i]);
     }
     return output;
 }
