@@ -51,7 +51,7 @@ export class SimplePanel extends Component<Props, State> {
       let indexDate = this.state.indexDate;
       indexDate = (indexDate + 1) % this.state.days.length;
       const view = this.getDate(this.state.days[indexDate]);
-      this.setState({indexDate,view});
+      this.setState({indexDate,view, lView:[]});
     }
     this.time = setTimeout(()=>{this.animatioin()},this.props.options.delay);
   }
@@ -61,7 +61,7 @@ export class SimplePanel extends Component<Props, State> {
       this.output = this.processData(prevProps.data.series);
       const days = this.loadDate(this.output);
       const view = days[this.state.indexDate] ? this.getDate(days[this.state.indexDate]) : this.getDate(days[0]);
-      this.setState({view,days,output: this.output,series: prevProps.data.series})
+      this.setState({view,days,output: this.output,series: prevProps.data.series, lView: []})
     }
   }
   processData( series: DataFrame[]): any{
