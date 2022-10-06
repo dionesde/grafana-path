@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react';
-import {CircleMarker, Tooltip} from "react-leaflet";
+import {CircleMarker} from "react-leaflet";
 import {Point} from "../data";
 
 export interface RoutePathProps {
@@ -23,9 +23,7 @@ function RoutePath(props: RoutePathProps): ReactElement {
                 onclick={() => {onclick(point)}}
                 //pathOptions={{ color: 'red' }}
                 radius={radius ? radius : 2}>
-                <Tooltip>
-                    teste
-                </Tooltip>
+
             </CircleMarker>
             )
         )}
