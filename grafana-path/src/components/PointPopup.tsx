@@ -5,9 +5,7 @@ import parse from 'html-react-parser';
 
 
 export interface GenericPointPopupProps {
-    host: string;
-    dest: string;
-    color: string;
+    description?: string;
 }
 
 export interface PointPopupProps extends GenericPointPopupProps {
@@ -19,32 +17,19 @@ export interface PointPopupProps extends GenericPointPopupProps {
 }
 
 
-const PointPopup: React.FC<PointPopupProps> = ({ host, dest }) => {
+
+const PointPopup: React.FC<PointPopupProps> = ({ description }) => {
     return (
-        <Popup className="point-popup">
-            <div className="region-label">
-                llll
-            </div>
-            <hr />
-            <ul className="hop-list">
-                <li className="hop-entry">
-                    teste
-                </li>
-            </ul>
-            <hr />
-            <div className="host-dest-label">
-        <span className="host-label" title={host} >
-          { parse(host) }
-        </span>
-                <span className="host-arrow" >
-          &nbsp; ➜ &nbsp;
-        </span>
-                <span className="dest-label" title={host}>
-          {dest}
-        </span>
-            </div>
-        </Popup>
+        <div>{check_pop(description)}</div>
+
     );
+    function check_pop(description: any): any{
+        if(description){
+            return <Popup className="point-popup">
+                { parse(description ? description : '') }
+            </Popup>
+        }
+    }
 };
 
 export default PointPopup;
