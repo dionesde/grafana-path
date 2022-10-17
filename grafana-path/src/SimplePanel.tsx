@@ -102,7 +102,7 @@ export class SimplePanel extends Component<Props, State> {
   loadLine(point: Point){
     const output = [];
     for(let i = 0; i < point.from.length; i++){
-      output.push({from: [point.lat,point.lng],to: [point.from[i].lat, point.from[i].lng], color: point.from[i].color});
+      output.push({from: [point.lat,point.lng],to: [point.from[i].lat, point.from[i].lng], color: point.color});
     }
     this.setState({lView: output});
   }
