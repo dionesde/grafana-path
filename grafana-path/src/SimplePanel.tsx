@@ -106,6 +106,25 @@ export class SimplePanel extends Component<Props, State> {
     }
     this.setState({lView: output});
   }
+  check_day(days: any[]): any{
+    if(days.length > 0){
+      return  <Control position="topright">
+        <div className='map-overlay'>
+          <span>{days[this.state.indexDate]}</span>
+          <div>
+            <input className="slider" type='range' defaultValue={0} step="1" min="0" max={days.length -1} onChange={e => {
+              const indexDate = Number(e.target.value);
+              const view = this.getDate(this.state.days[indexDate]);
+              this.setState({indexDate, view, play: false, lView: []});
+            }
+            } />
+            <Icon className="icon" onClick={()=>{this.setState({ play: !this.state.play});}} name={this.state.play ? 'pause' : 'play'} />
+          </div>
+        </div>
+
+      </Control>
+    }
+  }
   render(){
     const { options, width, height } = this.props;
     const theme = false;
@@ -130,21 +149,8 @@ export class SimplePanel extends Component<Props, State> {
           <Control position="bottomleft">
             <Legend points={legend}/>
           </Control>
-          <Control position="topright">
-            <div className='map-overlay'>
-              <span>{days[this.state.indexDate]}</span>
-               <div>
-                 <input className="slider" type='range' defaultValue={0} step="1" min="0" max={days.length -1} onChange={e => {
-                const indexDate = Number(e.target.value);
-                const view = this.getDate(this.state.days[indexDate]);
-                this.setState({indexDate, view, play: false, lView: []});
-              }
-              } />
-                <Icon className="icon" onClick={()=>{this.setState({ play: !this.state.play});}} name={this.state.play ? 'pause' : 'play'} />
-               </div>
-            </div>
+          {this.check_day(days)}
 
-          </Control>
         </RLMap>
     );
   }
