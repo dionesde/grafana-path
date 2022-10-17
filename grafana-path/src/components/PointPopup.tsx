@@ -1,6 +1,8 @@
 /* eslint-disable react/jsx-no-target-blank */
 import React from 'react';
 import {Popup} from "react-leaflet";
+import parse from 'html-react-parser';
+
 
 export interface GenericPointPopupProps {
     host: string;
@@ -16,11 +18,6 @@ export interface PointPopupProps extends GenericPointPopupProps {
     //showSearchIcon: boolean;
 }
 
-function htmlDecode(input: string): any{
-    var e = document.createElement('div');
-    e.innerHTML = input;
-    return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
-}
 
 const PointPopup: React.FC<PointPopupProps> = ({ host, dest }) => {
     return (
@@ -36,9 +33,9 @@ const PointPopup: React.FC<PointPopupProps> = ({ host, dest }) => {
             </ul>
             <hr />
             <div className="host-dest-label">
-        <div className="host-label" title={host} dangerouslySetInnerHTML={{__html: htmlDecode(host)}}>
-
-        </div>
+        <span className="host-label" title={host} >
+          { parse(host) }
+        </span>
                 <span className="host-arrow" >
           &nbsp; ➜ &nbsp;
         </span>
