@@ -76,7 +76,7 @@ export function dataFrameToEntriesUnsorted(frame: DataFrame, idx?: number): Data
         if (fields.hasOwnProperty(field.name)) {
             fields[field.name] = field.values.toArray();
         } else {
-            fields[field.name] = undefined;
+            fields[field.name] = '';
       }
     }
     if (Object.values(fields).includes(null)) {
@@ -104,7 +104,8 @@ export function dataFrameToEntriesUnsorted(frame: DataFrame, idx?: number): Data
         fields.label.map((v: string) => v),
         fields.day.map((v: string) => v),
         fields.id.map((v: string) => v),
-        fields.from.map((v: string) => v)
+        fields.from.map((v: string) => v),
+        fields.description.map((v: string) => v)
     ) as DataEntry[];
     return entries;
 }
