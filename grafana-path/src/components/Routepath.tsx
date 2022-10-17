@@ -24,7 +24,7 @@ function RoutePath(props: RoutePathProps): ReactElement {
                 onclick={() => {onclick(point)}}
                 //pathOptions={{ color: 'red' }}
                 radius={radius ? radius : 2}>
-<PointPopup host={'&lt;p&gt;&lt;strong&gt;Our Opportunity:&lt;/strong&gt;&lt;/p&gt;'} dest={'jagsdhjgahjsgdja'} color={'#00ff55'}/>
+<PointPopup host={'<b>teste</b>'} dest={'jagsdhjgahjsgdja'} color={'#00ff55'}/>
             </CircleMarker>
             )
         )}
