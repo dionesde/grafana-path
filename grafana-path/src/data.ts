@@ -8,7 +8,8 @@ export interface Point {
     lng: number;
     color: string,
     label: string,
-    day: string
+    day: string,
+    popup?: string,
     from: Point[],
     to?: Point[],
     direction: string
@@ -70,13 +71,13 @@ function formatdata(data: DataEntry[]): Point[]{
 }
 export function dataFrameToEntriesUnsorted(frame: DataFrame, idx?: number): DataEntry[] {
     let fields: any = {};
-    ['latitude','longitude','color', 'label','day', 'id', 'from'].forEach((item) => (fields[item] = null));
+    ['latitude','longitude','color', 'label','day', 'id', 'from','description'].forEach((item) => (fields[item] = null));
     for (const field of frame.fields) {
         if (fields.hasOwnProperty(field.name)) {
             fields[field.name] = field.values.toArray();
-        } /* else {
-        console.log('Ignoring field: ' + field.name);
-      } */
+        } else {
+            fields[field.name] = undefined;
+      }
     }
     if (Object.values(fields).includes(null)) {
         const missingFields = Object.entries(fields)
