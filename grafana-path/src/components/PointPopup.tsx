@@ -36,9 +36,9 @@ const PointPopup: React.FC<PointPopupProps> = ({ host, dest }) => {
             </ul>
             <hr />
             <div className="host-dest-label">
-        <span className="host-label" title={host}>
-          {htmlDecode(host)}
-        </span>
+        <div className="host-label" title={host} {...{__html: htmlDecode(host)}}>
+
+        </div>
                 <span className="host-arrow" >
           &nbsp; ➜ &nbsp;
         </span>
