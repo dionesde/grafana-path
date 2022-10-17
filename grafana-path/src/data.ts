@@ -1,6 +1,6 @@
 import {DataFrame} from "@grafana/data";
 import _ from "lodash";
-export type DataEntry = [number, number,string, string, string, string, string];
+export type DataEntry = [number, number,string, string, string, string, string, string];
 
 export interface Point {
     id?: string
@@ -59,6 +59,7 @@ function formatdata(data: DataEntry[]): Point[]{
                 day: data[i][4],
                 id: data[i][5],
                 direction: data[i][6],
+                popup: data[i][7],
                 from: [] as Point[]
             }as Point);
         }
