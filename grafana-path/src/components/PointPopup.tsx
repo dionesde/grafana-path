@@ -16,6 +16,12 @@ export interface PointPopupProps extends GenericPointPopupProps {
     //showSearchIcon: boolean;
 }
 
+function htmlDecode(input: string): any{
+    var e = document.createElement('div');
+    e.innerHTML = input;
+    return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
+}
+
 const PointPopup: React.FC<PointPopupProps> = ({ host, dest }) => {
     return (
         <Popup className="point-popup">
@@ -31,7 +37,7 @@ const PointPopup: React.FC<PointPopupProps> = ({ host, dest }) => {
             <hr />
             <div className="host-dest-label">
         <span className="host-label" title={host}>
-          {host}
+          {htmlDecode(host)}
         </span>
                 <span className="host-arrow" >
           &nbsp; ➜ &nbsp;
