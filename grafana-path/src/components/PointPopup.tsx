@@ -36,7 +36,7 @@ const PointPopup: React.FC<PointPopupProps> = ({ host, dest }) => {
             </ul>
             <hr />
             <div className="host-dest-label">
-        <div className="host-label" title={host} {...{__html: htmlDecode(host)}}>
+        <div className="host-label" title={host} dangerouslySetInnerHTML={{__html: htmlDecode(host)}}>
 
         </div>
                 <span className="host-arrow" >
