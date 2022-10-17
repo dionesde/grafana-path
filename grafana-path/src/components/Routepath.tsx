@@ -1,6 +1,7 @@
 import React, { ReactElement } from 'react';
 import {CircleMarker} from "react-leaflet";
 import {Point} from "../data";
+import PointPopup from "./PointPopup";
 
 export interface RoutePathProps {
     points: Point[];
@@ -23,7 +24,7 @@ function RoutePath(props: RoutePathProps): ReactElement {
                 onclick={() => {onclick(point)}}
                 //pathOptions={{ color: 'red' }}
                 radius={radius ? radius : 2}>
-
+<PointPopup host={'twkkawbv'} dest={'jagsdhjgahjsgdja'} color={'#00ff55'}/>
             </CircleMarker>
             )
         )}
