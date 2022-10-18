@@ -25,7 +25,7 @@ const PointPopup: React.FC<PointPopupProps> = ({ description }) => {
     );
     function check_pop(description: any): any{
         if(description){
-            return <Popup autoClose={true} className="point-popup">
+            return <Popup onClose={()=>{alert('teste')}} className="point-popup">
                 { parse(description ? description : '') }
             </Popup>
         }
