@@ -2,7 +2,9 @@
     height: 100%
 }
  */
-
+.leaflet-popup-close-button{
+    display: none;
+}
 .map-overlay {
     font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
     color: rgba(0, 0, 0, 0.8);
