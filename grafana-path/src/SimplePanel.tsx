@@ -127,7 +127,7 @@ export class SimplePanel extends Component<Props, State> {
   }
   render(){
     const { options, width, height } = this.props;
-    const theme = false;
+    const theme = true;
     const viewer = this.state.view as any;
     const lView  = this.state.lView as any[];
     const legend = this.state.output as any;
